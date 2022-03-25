@@ -2,9 +2,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
-from tkPDFViewer import tkPDFViewer as pdf
 
-import PIL as P
 from PIL import Image, ImageTk
 
 home = Tk()
