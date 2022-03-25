@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 
 # Read Image
-img = cv2.imread('permis4.jpg')
+img = cv2.imread('Images/permis4.jpg')
 
 # Display Image
 cv2.imshow('image', img)
@@ -90,30 +90,30 @@ cv2.imshow('gray', gray)
 cv2.imshow('Threshold OTSU', image_result)
 
 cv2.imshow('Threshold Seuil (OTSU-66)', th)
-cv2.imwrite('Filtre1-OTSU-66.jpg', th)
+cv2.imwrite('Images/Filtre1-OTSU-66.jpg', th)
 
 cv2.imshow('Après dilatation', dilate)
-cv2.imwrite('Filtre2-Dilat.jpg', dilate)
+cv2.imwrite('Images/Filtre2-Dilat.jpg', dilate)
 
 cv2.imshow('Après érosion', erode)
-cv2.imwrite('Filtre3-Eros.jpg', erode)
+cv2.imwrite('Images/Filtre3-Eros.jpg', erode)
 
 cv2.imshow('Closing', close)
-cv2.imwrite('Filtre4-Close.jpg', close)
+cv2.imwrite('Images/Filtre4-Close.jpg', close)
 
 cv2.imshow('Inversion', imginv)
 
 cv2.imshow('Dilatation Inv', dilateinv)
 # dilateinv = cv2.bitwise_not(dilateinv)
-cv2.imwrite('Filtre5-DIlatInv.jpg', dilateinv)
+cv2.imwrite('Images/Filtre5-DIlatInv.jpg', dilateinv)
 
 cv2.imshow('Erosion Inv', erodeinv)
 # erodeinv = cv2.bitwise_not(erodeinv)
-cv2.imwrite('Filtre6-EroseInv.jpg', erodeinv)
+cv2.imwrite('Images/Filtre6-EroseInv.jpg', erodeinv)
 
 cv2.imshow('Closing Inv', closeinv)
 # closeinv = cv2.bitwise_not(closeinv)
-cv2.imwrite('Filtre7-CloseInv.jpg', closeinv)
+cv2.imwrite('Images/Filtre7-CloseInv.jpg', closeinv)
 
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
