@@ -13,7 +13,7 @@ import json
 import Classes
 import database_connection as db
 
-im_1_path = 'permis4.jpg'
+im_1_path = 'Images/permis4.jpg'
 print(im_1_path)
 
 
@@ -28,24 +28,11 @@ result = recognize_text(im_1_path)
 
 print("Obtained result:", result)
 
-personne = {"Country" : result[1],
-            "firstName" : result[3],
-            "lastName" : result[4],
-            "birthDate" : result[5],
-            "birthPlace" : result[5],
-            "issueDate" : result[6],
-            "expiryDate" : result[8],
-            "deliveredAutority" : "",
-            "mrzBand" : ""
-           }
-
-print(personne['Country'])
-
 permis = Classes.PermisClass("Vanessa","MAPA",
                              "1585-10-12","Baganté",
                              "2020-10-15","2025-10-15",
                              "Limoges", "B", "123456789", "9876543210")
 
-db.save_permis(permis)
+#db.save_permis(permis)
 
 print("Fini ! ")

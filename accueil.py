@@ -1,9 +1,9 @@
 # This is a sample Python script.
 import tkinter as tk
 from tkinter import *
-from tkinter import filedialog
 
-from PIL import Image, ImageTk
+
+
 
 home = Tk()
 
@@ -33,7 +33,7 @@ rb1.select()
 
 def test_radio():
     home.destroy()
-    import RectoVerso
+    import PermisDeConduire
 
 
 cmd = Button(home, text="Ok", command=test_radio)
