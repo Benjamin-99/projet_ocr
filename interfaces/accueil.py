@@ -33,7 +33,7 @@ rb1.select()
 
 def test_radio():
     home.destroy()
-    import PermisDeConduire
+    import interfaces.permisdeconduire.PermisDeConduire
 
 
 cmd = Button(home, text="Ok", command=test_radio)
