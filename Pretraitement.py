@@ -7,6 +7,7 @@ Created on Tue Oct 26 16:06:42 2021
 
 from cv2 import cv2
 import numpy as np
+import easyocr
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -16,10 +17,10 @@ import matplotlib.pyplot as plt
 
 
 # Read Image
-img = cv2.imread('Images/permis4.jpg')
+image = cv2.imread('Images/permis4.jpg')
 
 # Display Image
-cv2.imshow('image', img)
+cv2.imshow('image', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
@@ -28,29 +29,58 @@ Pré-traitement classique
 """
 
 # Echalonage
-img = cv2.resize(img, None, fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+image = cv2.resize(image, None, fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
 
+"""
 hist = cv2.calcHist([img], [0], None, [256], [0, 256])
 plt.plot(hist, 'r-')
 plt.show()
+"""
 
 # Recadrage de la zone de texte
 y = 75
-x = 172
-h = 145
+x = 190
+h = 25
 w = 200
-crop = img[y:y + h, x:x + w]
-cv2.imshow('Image', crop)
+deltaY = 0
+liste = []
+
+
+for i in range(6):
+    champ=image[y+deltaY:y+deltaY+h, x:x + w]
+    cv2.waitKey(0)
+    cv2.imshow('Image', champ)
+    cv2.waitKey(0)
+    gray = cv2.cvtColor(champ, cv2.COLOR_BGR2GRAY)
+    img = cv2.cvtColor(champ, cv2.COLOR_BGR2GRAY)
+    otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    ret, th = cv2.threshold(gray, (otsu_threshold - 66), 255, cv2.THRESH_BINARY)
+    imginv = cv2.bitwise_not(th)
+    taille = (2, 2)
+    kernel = np.ones(taille, np.uint8)
+    dilateinv = cv2.dilate(imginv, kernel, iterations=1)
+    cv2.imshow('Image', imginv)
+    liste.append(easyocr.Reader(['fr']).readtext(imginv   , detail=0))
+    deltaY = deltaY+25-1
+    print(i)
+
+print(liste)
+
+nom = image[y:y + h, x:x + w]
+prenom = image[y+deltaY:y+deltaY+h, x:x + w]
+cv2.imshow('Image', prenom)
 cv2.waitKey(0)
 
 # Applying Grayscale filter to image
-gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
-img = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(nom, cv2.COLOR_BGR2GRAY)
+img = cv2.cvtColor(nom, cv2.COLOR_BGR2GRAY)
 
-histc = cv2.calcHist([crop], [0], None, [256], [0, 256])
+""""
+histc = cv2.calcHist([nom], [0], None, [256], [0, 256])
 histi = cv2.calcHist([img], [0], None, [256], [0, 256])
 plt.plot(histc, 'g-', histi, 'b-')
 plt.show()
+"""
 
 # Application de flou à travers un filtre
 # cv2.threshold(cv2.GaussianBlur(img, (3, 3), 0), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
@@ -65,7 +95,7 @@ plt.show()
 
 # cv2.adaptiveThreshold(cv2.medianBlur(img, 3), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
 
-otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+otsu_threshold, image_result = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 print("Obtained threshold: ", otsu_threshold)
 
 ret, th = cv2.threshold(gray, (otsu_threshold - 66), 255, cv2.THRESH_BINARY)
@@ -118,7 +148,7 @@ cv2.imwrite('Images/Filtre7-CloseInv.jpg', closeinv)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-cv2.imshow('end', img)
+cv2.imshow('end', gray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
