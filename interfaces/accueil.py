@@ -20,23 +20,32 @@ home_font = ('times', 12, 'bold')
 l1 = tk.Label(home, text='Choix du type de fichier', width=30, font=home_font)
 l1.pack()
 
-fileChoice = StringVar()
-rb1 = Radiobutton(home, text="Gray card", value='Carte_G', variable=fileChoice)
-rb2 = Radiobutton(home, text="Id card     ", value='Carte_I', variable=fileChoice)
-rb3 = Radiobutton(home, text="Passport  ", value='P', variable=fileChoice)
+
+# Function btn
+def choice_btn():
+    choice = fileChoice.get()
+    if choice == 1:
+        home.destroy()
+        import interfaces.CarteGrise.CarteGrise
+    elif choice == 2:
+        home.destroy()
+        import interfaces.CarteIdentite.CarteIdentite
+    elif choice == 3:
+        home.destroy()
+        import interfaces.permisdeconduire.PermisDeConduire
+
+
+# Radio button
+fileChoice = IntVar()
+rb1 = Radiobutton(home, text="Gray card", value=1, variable=fileChoice)
+rb2 = Radiobutton(home, text="Id card", value=2, variable=fileChoice)
+rb3 = Radiobutton(home, text="Driver License", value=3, variable=fileChoice)
 rb1.pack()
 rb2.pack()
 rb3.pack()
 
 rb1.select()
 
-
-def test_radio():
-    home.destroy()
-    import interfaces.permisdeconduire.PermisDeConduire
-
-
-cmd = Button(home, text="Ok", command=test_radio)
+cmd = Button(home, text="Ok", command=choice_btn)
 cmd.pack()
-
 home.mainloop()
