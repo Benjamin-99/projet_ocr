@@ -34,8 +34,8 @@ Pré-traitement classique
 """
 
 # Echalonage
-imageRecto = cv2.resize(imageRecto, (506, 317), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
-imageVerso = cv2.resize(imageVerso, (506, 317), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+imageRecto = cv2.resize(imageRecto, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+imageVerso = cv2.resize(imageVerso, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
 """
 cv2.imshow('imageVerso', imageVerso)
 img = cv2.cvtColor(imageVerso, cv2.COLOR_BGR2GRAY)
@@ -45,19 +45,33 @@ cv2.imshow('image I', img)
 print(easyocr.Reader(['fr'], gpu=True).readtext(image_result, detail=0))
 """
 # Recadrage de la zone de texte
-yRecto = 60
-x = 158
-h = 25
-w = 200
+yRecto = 160
+x = 164
+h = 175
+w = 310
 deltaY = 29
 recto = []
-verso = []
 
-champVerso = imageVerso[28 + deltaY:28 + deltaY + 18, 160:160 + 200]
+#65:83,163:310 img
+#85:100,163:310 img
+#104:118,163:310
+#124:140,163;310 img
+#144:156 img
+#160:175 img
+champRecto = imageRecto[yRecto:h, x:w]
 # cv2.waitKey(0)
-cv2.imshow('Image', champVerso)
+cv2.imshow('Image', champRecto)
 cv2.waitKey(0)
-print(easyocr.Reader(['fr'], gpu=True).readtext(champVerso, detail=0))
+img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
+otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
+ret, th = cv2.threshold(img, (otsu_threshold - 69), 255, cv2.THRESH_BINARY)
+imginv = cv2.bitwise_not(th)
+taille = (2, 2)
+kernel = np.ones(taille, np.uint8)
+dilateinv = cv2.dilate(imginv, kernel, iterations=1)
+cv2.imshow('Image', image_result)
+cv2.waitKey(0)
+print(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
 
 """
 Extraction recto
@@ -85,40 +99,30 @@ for i in range(6):
 
 print(recto)
 """
-yVerso = 28
-xVerso = 200
-hVerso = 18
-wVerso = 200
+
+yVerso = 30
+xVerso = 223
+hVerso = 43
+wVerso = 338
 deltaY = 29
 verso = []
+categories = ['AM','A1','A2','A','B1','B','C1','C','D1','D','BE','C1E','CE','D1E','DE']
 """
 Extraction verso
 """
-
+"""
 for i in range(15):
-    champVerso = imageVerso[yVerso + deltaY-1:yVerso + deltaY + hVerso, xVerso:xVerso + wVerso]
-    print("Y :", yVerso + deltaY, " X: ", xVerso)
-    # cv2.waitKey(0)
-    cv2.imshow('Image', champVerso)
-    cv2.waitKey(0)
-    """
-    gray = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
+    champVerso = imageVerso[yVerso:hVerso, xVerso:wVerso]
     img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
-    otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
-    cv2.imshow('image Thresh_OTSU', image_result)
-    ret, th = cv2.threshold(img, (otsu_threshold - 69), 255, cv2.THRESH_BINARY)
-    imginv = cv2.bitwise_not(th)
-    taille = (2, 2)
-    kernel = np.ones(taille, np.uint8)
-    dilateinv = cv2.dilate(imginv, kernel, iterations=1)
-    # cv2.imshow('Image', th)
     verso.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
     time.sleep(0.2)
-    """
-    deltaY = deltaY + 17
-    print(i)
+    yVerso = yVerso + 15
+    hVerso = hVerso + 15
 
-print(verso)
+for i in range(15):
+    if verso[i]:
+        print(categories[i])
+"""
 
 nom = imageRecto[yRecto:yRecto + h, x:x + w]
 prenom = imageRecto[yRecto + deltaY:yRecto + deltaY + h, x:x + w]
