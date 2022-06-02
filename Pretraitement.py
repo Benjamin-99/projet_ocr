@@ -75,17 +75,17 @@ print(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
 """
 Extraction recto
 """
-
+print("Recto")
 for i in range(5):
     champRecto= imageRecto[yRecto:hRecto, xRecto:wRecto]
     img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
-    recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+    recto.append(easyocr.Reader(['fr'], gpu=True).readtext(champRecto, detail=0))
     time.sleep(0.2)
     yRecto = yRecto + 20
     hRecto = hRecto + 20
 
 img = cv2.cvtColor(imageRecto[160:175, xRecto:wRecto], cv2.COLOR_BGR2GRAY)
-recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+recto.append(easyocr.Reader(['fr'], gpu=True).readtext(champRecto, detail=0))
 time.sleep(0.2)
 print(recto)
 
@@ -130,11 +130,11 @@ categories = ['AM','A1','A2','A','B1','B','C1','C','D1','D','BE','C1E','CE','D1E
 """
 Extraction verso
 """
-"""
+print("Verso")
 for i in range(15):
     champVerso = imageVerso[yVerso:hVerso, xVerso:wVerso]
     img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
-    verso.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+    verso.append(easyocr.Reader(['fr'], gpu=True).readtext(champVerso, detail=0))
     time.sleep(0.2)
     yVerso = yVerso + 15
     hVerso = hVerso + 15
@@ -142,8 +142,8 @@ for i in range(15):
 for i in range(15):
     if verso[i]:
         print(categories[i])
-"""
 
+"""
 nom = imageRecto[yRecto:yRecto + h, x:x + w]
 prenom = imageRecto[yRecto + deltaY:yRecto + deltaY + h, x:x + w]
 cv2.imshow('Image', prenom)
@@ -220,4 +220,4 @@ cv2.destroyAllWindows()
 # cv2.imwrite('graytest.jpg',gray)
 
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+"""
