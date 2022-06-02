@@ -61,28 +61,51 @@ INSERT INTO `carte_grise` (`num_immatriculation`, `date_immatriculation`, `nom`,
 --
 
 CREATE TABLE `carte_identite` (
-  `id_carte` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `sexe` varchar(50) NOT NULL,
-  `nationalite` varchar(50) NOT NULL,
-  `date_naissance` date NOT NULL,
-  `lieu_naissance` varchar(50) NOT NULL,
-  `nom_usage` varchar(50) NOT NULL,
-  `numero_document` varchar(50) NOT NULL,
-  `date_expiration` date NOT NULL,
-  `numero_carte` varchar(50) NOT NULL
+`id_carte` int(11) NOT NULL,
+`nom` varchar(50) NOT NULL,
+`prenom` varchar(50) NOT NULL,
+`sexe` varchar(50) NOT NULL,
+`nationalite` varchar(50) NOT NULL,
+`date_naissance` date NOT NULL,
+`lieu_naissance` varchar(50) NOT NULL,
+`nom_usage` varchar(50) NOT NULL,
+`numero_document` varchar(50) NOT NULL,
+`date_expiration` date NOT NULL,
+`numero_carte` varchar(50) NOT NULL,
+`taille` varchar(50) NOT NULL,
+`date_delivrance` date NOT NULL,
+`adresse` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `carte_identite`
 --
 
-INSERT INTO `carte_identite` (`id_carte`, `nom`, `prenom`, `sexe`, `nationalite`, `date_naissance`, `lieu_naissance`, `nom_usage`, `numero_document`, `date_expiration`, `numero_carte`) VALUES
-(1, 'MOUAFFO', 'zidane', 'F', 'Francais', '2012-05-01', 'paris', 'takoumbo', '45fg55', '2023-05-24', '345126'),
-(5, 'Toukam', 'celine', 'F', 'Camerounaise', '2013-05-01', 'cecec', 'sando', '45fg55', '2030-05-01', '25104'),
-(6, 'Ade', 'randy', 'M', 'Nigerien', '2012-04-01', 'bamenda', 'dilane', '87k956', '2028-05-09', '541200'),
-(15552, 'MOUAFFO', 'zidane', 'F', 'Francais', '2012-05-01', 'paris', 'takoumbo', '45fg55', '2022-03-30', '345126');
+[14:07] TOUKAM TATEU Lindsey
+CREATE TABLE `carte_identite` (
+`id_carte` int(11) NOT NULL,
+`nom` varchar(50) NOT NULL,
+`prenom` varchar(50) NOT NULL,
+`sexe` varchar(50) NOT NULL,
+`nationalite` varchar(50) NOT NULL,
+`date_naissance` date NOT NULL,
+`lieu_naissance` varchar(50) NOT NULL,
+`nom_usage` varchar(50) NOT NULL,
+`numero_document` varchar(50) NOT NULL,
+`date_expiration` date NOT NULL,
+`numero_carte` varchar(50) NOT NULL,
+`taille` varchar(50) NOT NULL,
+`date_delivrance` date NOT NULL,
+`adresse` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `carte_identite` (`id_carte`, `nom`, `prenom`, `sexe`, `nationalite`, `date_naissance`, `lieu_naissance`, `nom_usage`, `numero_document`, `date_expiration`, `numero_carte`,`taille`,`date_delivrance`,`adresse`) VALUES
+(1, 'MOUAFFO', 'zidane', 'F', 'Francais', '2012-05-01', 'paris', 'takoumbo', '45fg55', '2023-05-24', '345126','1.54m','2020-09-27','6 Rue de la joie'),
+(5, 'Toukam', 'celine', 'F', 'Camerounaise', '2013-05-01', 'cecec', 'sando', '45fg55', '2030-05-01', '25104','1.54m','2020-09-27','2 Rue de la joie'),
+(6, 'Ade', 'randy', 'M', 'Nigerien', '2012-04-01', 'bamenda', 'dilane', '87k956', '2028-05-09', '541200','1.54m','2020-09-27','89 Rue de la joie'),
+(15552, 'MOUAFFO', 'zidane', 'F', 'Francais', '2012-05-01', 'paris', 'takoumbo', '45fg55', '2022-03-30', '345126','1.54m','2020-09-27','61 Rue de la joie');
+
 
 -- --------------------------------------------------------
 
