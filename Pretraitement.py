@@ -45,20 +45,19 @@ cv2.imshow('image I', img)
 print(easyocr.Reader(['fr'], gpu=True).readtext(image_result, detail=0))
 """
 # Recadrage de la zone de texte
-yRecto = 160
-x = 164
-h = 175
-w = 310
-deltaY = 29
+yRecto = 65
+xRecto = 164
+hRecto = 80
+wRecto = 310
 recto = []
-
-#65:83,163:310 img
+"""
+#65:80,163:310 img
 #85:100,163:310 img
-#104:118,163:310
-#124:140,163;310 img
-#144:156 img
+#105:120,163:310
+#125:140,163;310 img
+#145:160 img
 #160:175 img
-champRecto = imageRecto[yRecto:h, x:w]
+champRecto = imageRecto[yRecto:hRecto, xRecto:wRecto]
 # cv2.waitKey(0)
 cv2.imshow('Image', champRecto)
 cv2.waitKey(0)
@@ -72,10 +71,31 @@ dilateinv = cv2.dilate(imginv, kernel, iterations=1)
 cv2.imshow('Image', image_result)
 cv2.waitKey(0)
 print(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
-
+"""
 """
 Extraction recto
 """
+
+for i in range(5):
+    champRecto= imageRecto[yRecto:hRecto, xRecto:wRecto]
+    img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
+    recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+    time.sleep(0.2)
+    yRecto = yRecto + 20
+    hRecto = hRecto + 20
+
+img = cv2.cvtColor(imageRecto[160:175, xRecto:wRecto], cv2.COLOR_BGR2GRAY)
+recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+time.sleep(0.2)
+print(recto)
+
+"""
+Traitement du recto
+"""
+
+lt = [i.split(' ', 1) for i in recto[2]]
+print(lt)
+
 """
 for i in range(6):
     champRecto= imageRecto[yRecto + deltaY:yRecto + deltaY + h, x:x + w]
