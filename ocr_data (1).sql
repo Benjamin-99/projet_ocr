@@ -81,7 +81,7 @@ CREATE TABLE `carte_identite` (
 -- Déchargement des données de la table `carte_identite`
 --
 
-[14:07] TOUKAM TATEU Lindsey
+
 CREATE TABLE `carte_identite` (
 `id_carte` int(11) NOT NULL,
 `nom` varchar(50) NOT NULL,
