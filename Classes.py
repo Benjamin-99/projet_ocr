@@ -1,7 +1,7 @@
 class PermisClass:
     """A simple example class"""
 
-    def __init__(self,nom,prenom,date_naissance,lieu_naissance,date_creation,date_expiration,lieu_creation,categorie,bande_mrz,numero_permis):
+    def __init__(self,nom,prenom,date_naissance,lieu_naissance,date_creation,date_expiration,lieu_creation,categorie,numero_permis):
         self.nom= nom
         self.prenom= prenom
         self.date_naissance= date_naissance
@@ -10,7 +10,6 @@ class PermisClass:
         self.date_expiration = date_expiration
         self.lieu_creation= lieu_creation
         self.categorie= categorie
-        self.bande_mrz= bande_mrz
         self.numero_permis = numero_permis
 
 

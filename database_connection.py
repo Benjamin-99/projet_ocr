@@ -4,7 +4,7 @@ import mysql.connector
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
+    password="root",
     database="ocr_data"
 )
 
@@ -27,8 +27,8 @@ def save_permis(p):
 
     print("Start ! ")
     print(p.categorie)
-    query = """INSERT INTO permis (nom, prenom, date_naissance, lieu_naissance, date_creation, date_expiration, lieu_creation, categorie, bande_mrz, numero_permis) VALUES(%s, %s, %s, %s, %s, %s, %s,  %s, %s, %s)"""
-    reference = (p.nom,p.prenom,p.date_naissance,p.lieu_naissance,p.date_creation,p.date_expiration,p.lieu_creation,p.categorie,p.bande_mrz,p.numero_permis)
+    query = """INSERT INTO permis (nom, prenom, date_naissance, lieu_naissance, date_creation, date_expiration, lieu_creation, categorie,numero_permis) VALUES(%s, %s, %s, %s, %s, %s, %s,  %s, %s)"""
+    reference = (p.nom,p.prenom,p.date_naissance,p.lieu_naissance,p.date_creation,p.date_expiration,p.lieu_creation,p.categorie,p.numero_permis)
     ex = cursor.execute(query,reference)
     db.commit()
     print("Fini ! ")
