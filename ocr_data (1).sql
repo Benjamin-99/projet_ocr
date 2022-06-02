@@ -99,7 +99,6 @@ CREATE TABLE `permis` (
   `date_expiration` date NOT NULL,
   `lieu_creation` varchar(20) NOT NULL,
   `categorie` varchar(3) NOT NULL,
-  `bande_mrz` varchar(30) NOT NULL,
   `numero_permis` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,20 +106,18 @@ CREATE TABLE `permis` (
 -- Déchargement des données de la table `permis`
 --
 
-INSERT INTO `permis` (`nom`, `prenom`, `date_naissance`, `lieu_naissance`, `date_creation`, `date_expiration`, `lieu_creation`, `categorie`, `bande_mrz`, `numero_permis`) VALUES
-('MOUAFFO', 'zidane', '2022-03-22', 'Yaoundé', '2022-03-02', '2022-03-30', '0000-00-00', 'b', 'fghjklkjhgfcvbn,', '211214522355'),
-('', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', ''),
-('MOUAFFO', 'zidane', '2022-03-22', 'paris', '2022-03-08', '2022-03-14', 'amiens', 'b', 'fghjklokj,n', '1112'),
-('', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '', '', ''),
-('MOUAFFO', 'zidane', '2022-03-22', 'paris', '2022-03-08', '2022-03-14', 'amiens', 'b', 'fghjklokj,n', '1112'),
-('Toukam', 'cvrvrv', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('Nanda', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222'),
-('NandaNV3', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', 'feff', '222');
+INSERT INTO `permis` (`nom`, `prenom`, `date_naissance`, `lieu_naissance`, `date_creation`, `date_expiration`, `lieu_creation`, `categorie`, `numero_permis`) VALUES
+('MOUAFFO', 'zidane', '2022-03-22', 'Yaoundé', '2022-03-02', '2022-03-30', '0000-00-00', 'b', '211214522355'),
+('MOUAFFO', 'zidane', '2022-03-22', 'paris', '2022-03-08', '2022-03-14', 'amiens', 'b', '1112'),
+('MOUAFFO', 'zidane', '2022-03-22', 'paris', '2022-03-08', '2022-03-14', 'amiens', 'b', '1112'),
+('Toukam', 'cvrvrv', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('Nanda', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV2', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222'),
+('NandaNV3', 'vianney', '2022-03-09', 'cecec', '2022-03-09', '2022-03-16', 'amiens', 'df', '222');
 
 --
 -- Index pour les tables déchargées
