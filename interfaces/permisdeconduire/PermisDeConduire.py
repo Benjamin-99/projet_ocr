@@ -25,6 +25,10 @@ def upload_file1():
     label1.image = image
     labelPath2.configure(text=image_Path)
 
+def return_home():
+    root.destroy()
+    import interfaces.accueil
+
 
 root = Tk()
 
@@ -125,6 +129,20 @@ labelTitle.configure(highlightbackground="#d9d9d9")
 labelTitle.configure(highlightcolor="black")
 labelTitle.configure(relief="solid")
 labelTitle.configure(text='''PERMIS DE CONDUIRE''')
+
+buttonReturn = tk.Button(root, command=lambda: return_home())
+buttonReturn.place(x=44, y=500, height=34, width=67)
+buttonReturn.configure(activebackground="#ececec")
+buttonReturn.configure(activeforeground="#000000")
+buttonReturn.configure(background="#d9d9d9")
+buttonReturn.configure(compound='right')
+buttonReturn.configure(cursor="fleur")
+buttonReturn.configure(disabledforeground="#a3a3a3")
+buttonReturn.configure(foreground="#000000")
+buttonReturn.configure(highlightbackground="#d9d9d9")
+buttonReturn.configure(highlightcolor="black")
+buttonReturn.configure(pady="0")
+buttonReturn.configure(text='''Return''')
 
 buttonExtract = tk.Button(root)
 buttonExtract.place(x=760, y=500, height=34, width=67)
