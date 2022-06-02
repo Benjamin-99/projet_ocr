@@ -8,6 +8,7 @@ Created on Tue Oct 26 16:06:42 2021
 from cv2 import cv2
 import numpy as np
 import easyocr
+import time
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -16,71 +17,121 @@ import matplotlib.pyplot as plt
 # otsu et après binairisation
 
 
-# Read Image
-image = cv2.imread('Images/permis4.jpg')
+# Read Image Recto
+imageRecto = cv2.imread('Images/permis-recto.jpg')
+imageVerso = cv2.imread('Images/permis-verso.jpg')
 
 # Display Image
-cv2.imshow('image', image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.imshow('imageRecto', imageRecto)
+# cv2.waitKey(0)
+# cv2.imshow('imageVerso', imageVerso)
+# cv2.waitKey(0)
+
+# cv2.destroyAllWindows()
 
 """
 Pré-traitement classique
 """
 
 # Echalonage
-image = cv2.resize(image, None, fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
-
+imageRecto = cv2.resize(imageRecto, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+imageVerso = cv2.resize(imageVerso, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
 """
-hist = cv2.calcHist([img], [0], None, [256], [0, 256])
-plt.plot(hist, 'r-')
-plt.show()
+cv2.imshow('imageVerso', imageVerso)
+img = cv2.cvtColor(imageVerso, cv2.COLOR_BGR2GRAY)
+otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
+cv2.imshow('image Thresh_OTSU', image_result)
+cv2.imshow('image I', img)
+print(easyocr.Reader(['fr'], gpu=True).readtext(image_result, detail=0))
 """
-
 # Recadrage de la zone de texte
-y = 75
-x = 190
-h = 25
-w = 200
-deltaY = 0
-liste = []
+yRecto = 160
+x = 164
+h = 175
+w = 310
+deltaY = 29
+recto = []
 
+#65:83,163:310 img
+#85:100,163:310 img
+#104:118,163:310
+#124:140,163;310 img
+#144:156 img
+#160:175 img
+champRecto = imageRecto[yRecto:h, x:w]
+# cv2.waitKey(0)
+cv2.imshow('Image', champRecto)
+cv2.waitKey(0)
+img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
+otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
+ret, th = cv2.threshold(img, (otsu_threshold - 69), 255, cv2.THRESH_BINARY)
+imginv = cv2.bitwise_not(th)
+taille = (2, 2)
+kernel = np.ones(taille, np.uint8)
+dilateinv = cv2.dilate(imginv, kernel, iterations=1)
+cv2.imshow('Image', image_result)
+cv2.waitKey(0)
+print(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
 
+"""
+Extraction recto
+"""
+"""
 for i in range(6):
-    champ=image[y+deltaY:y+deltaY+h, x:x + w]
+    champRecto= imageRecto[yRecto + deltaY:yRecto + deltaY + h, x:x + w]
+    #cv2.waitKey(0)
+    cv2.imshow('Image', champRecto)
     cv2.waitKey(0)
-    cv2.imshow('Image', champ)
-    cv2.waitKey(0)
-    gray = cv2.cvtColor(champ, cv2.COLOR_BGR2GRAY)
-    img = cv2.cvtColor(champ, cv2.COLOR_BGR2GRAY)
-    otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    ret, th = cv2.threshold(gray, (otsu_threshold - 66), 255, cv2.THRESH_BINARY)
+    gray = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
+    img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
+    otsu_threshold, image_result = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
+    cv2.imshow('image Thresh_OTSU', image_result)
+    ret, th = cv2.threshold(img, (otsu_threshold - 69), 255, cv2.THRESH_BINARY)
     imginv = cv2.bitwise_not(th)
     taille = (2, 2)
     kernel = np.ones(taille, np.uint8)
     dilateinv = cv2.dilate(imginv, kernel, iterations=1)
-    cv2.imshow('Image', imginv)
-    liste.append(easyocr.Reader(['fr']).readtext(imginv   , detail=0))
-    deltaY = deltaY+25-1
+    #cv2.imshow('Image', th)
+    recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+    time.sleep(0.2)
+    deltaY = deltaY+24
     print(i)
 
-print(liste)
+print(recto)
+"""
 
-nom = image[y:y + h, x:x + w]
-prenom = image[y+deltaY:y+deltaY+h, x:x + w]
+yVerso = 30
+xVerso = 223
+hVerso = 43
+wVerso = 338
+deltaY = 29
+verso = []
+categories = ['AM','A1','A2','A','B1','B','C1','C','D1','D','BE','C1E','CE','D1E','DE']
+"""
+Extraction verso
+"""
+"""
+for i in range(15):
+    champVerso = imageVerso[yVerso:hVerso, xVerso:wVerso]
+    img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
+    verso.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+    time.sleep(0.2)
+    yVerso = yVerso + 15
+    hVerso = hVerso + 15
+
+for i in range(15):
+    if verso[i]:
+        print(categories[i])
+"""
+
+nom = imageRecto[yRecto:yRecto + h, x:x + w]
+prenom = imageRecto[yRecto + deltaY:yRecto + deltaY + h, x:x + w]
 cv2.imshow('Image', prenom)
 cv2.waitKey(0)
 
-# Applying Grayscale filter to image
+# Applying Grayscale filter to imageRecto
 gray = cv2.cvtColor(nom, cv2.COLOR_BGR2GRAY)
 img = cv2.cvtColor(nom, cv2.COLOR_BGR2GRAY)
-
-""""
-histc = cv2.calcHist([nom], [0], None, [256], [0, 256])
-histi = cv2.calcHist([img], [0], None, [256], [0, 256])
-plt.plot(histc, 'g-', histi, 'b-')
-plt.show()
-"""
 
 # Application de flou à travers un filtre
 # cv2.threshold(cv2.GaussianBlur(img, (3, 3), 0), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
@@ -98,9 +149,9 @@ plt.show()
 otsu_threshold, image_result = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 print("Obtained threshold: ", otsu_threshold)
 
-ret, th = cv2.threshold(gray, (otsu_threshold - 66), 255, cv2.THRESH_BINARY)
+ret, th = cv2.threshold(gray, (otsu_threshold - 70), 255, cv2.THRESH_BINARY)
 
-taille = (2,2)
+taille = (2, 2)
 
 # Dilatation et erosion
 kernel = np.ones(taille, np.uint8)
@@ -108,7 +159,7 @@ dilate = cv2.dilate(th, kernel, iterations=1)
 erode = cv2.erode(th, kernel, iterations=1)
 close = cv2.erode(dilate, kernel, iterations=1)
 
-# inverser l'image - dilatation - érosion
+# inverser l'imageRecto - dilatation - érosion
 imginv = cv2.bitwise_not(th)
 kernel = np.ones(taille, np.uint8)
 dilateinv = cv2.dilate(imginv, kernel, iterations=1)
@@ -120,30 +171,23 @@ cv2.imshow('gray', gray)
 cv2.imshow('Threshold OTSU', image_result)
 
 cv2.imshow('Threshold Seuil (OTSU-66)', th)
-cv2.imwrite('Images/Filtre1-OTSU-66.jpg', th)
 
 cv2.imshow('Après dilatation', dilate)
-cv2.imwrite('Images/Filtre2-Dilat.jpg', dilate)
 
 cv2.imshow('Après érosion', erode)
-cv2.imwrite('Images/Filtre3-Eros.jpg', erode)
 
 cv2.imshow('Closing', close)
-cv2.imwrite('Images/Filtre4-Close.jpg', close)
 
 cv2.imshow('Inversion', imginv)
 
 cv2.imshow('Dilatation Inv', dilateinv)
 # dilateinv = cv2.bitwise_not(dilateinv)
-cv2.imwrite('Images/Filtre5-DIlatInv.jpg', dilateinv)
 
 cv2.imshow('Erosion Inv', erodeinv)
 # erodeinv = cv2.bitwise_not(erodeinv)
-cv2.imwrite('Images/Filtre6-EroseInv.jpg', erodeinv)
 
 cv2.imshow('Closing Inv', closeinv)
 # closeinv = cv2.bitwise_not(closeinv)
-cv2.imwrite('Images/Filtre7-CloseInv.jpg', closeinv)
 
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
@@ -152,7 +196,7 @@ cv2.imshow('end', gray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-# Saving filtered image to new file
+# Saving filtered imageRecto to new file
 # cv2.imwrite('graytest.jpg',gray)
 
 cv2.waitKey(0)
