@@ -1,0 +1,5 @@
+supprimer le champ bandeMz dans la crte d'identité
+gerer le openfile vide (fait, a tester)
+mettre le return dans les formulaires
+terminer le fonction getValue dans le formulaire permis de conduire et la reprouires dans les autres formulaires
+gerer plusiers types d'image(fait, a tester )

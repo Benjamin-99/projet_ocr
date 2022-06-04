@@ -7,6 +7,7 @@
 
 import sys
 import tkinter as tk
+from datetime import datetime
 from tkinter import *
 import inter.permisdeconduire.PermisDeConduire1 as pc
 
@@ -298,4 +299,9 @@ def framePC(window):
     def getValue():
         nom = EntryNom.get()
         prenom = EntryPrenom.get()
-        print(nom, prenom)
+        a = "123"
+        b = float(a)
+        c = int (a)
+        date_time_str = "15/04/19"
+        date_time_obj = datetime.strptime(date_time_str, '%d/%m/%y').date()
+        print(nom, prenom, a, b, c, date_time_obj)
