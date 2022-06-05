@@ -1,5 +1,5 @@
-supprimer le champ bandeMz dans la crte d'identité
-gerer le openfile vide (fait, a tester)
-mettre le return dans les formulaires
-terminer le fonction getValue dans le formulaire permis de conduire et la reprouires dans les autres formulaires
-gerer plusiers types d'image(fait, a tester )
+supprimer le champ bandeMrz dans le formulaire de la carte d'identité
+mettre les boutons "return", "enregistrer" et "exit" dans tous les formulaires
+terminer la fonction getValue dans le formulaire permis de conduire et la reprouires dans les autres formulaires (renommer les variables)
+ajouter le champ "nom d'usage" dans le formulaire de la carte grise
+pour recuperer le chemin de l'image c'est dans inter.CarteGrise.CarteGrise1 et c'est la variable x. reproduire la recuperation du chemin de l'image dans les autres pages.
