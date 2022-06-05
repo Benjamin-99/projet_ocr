@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 # otsu et après binairisation
 
 
-
 # Display Image
 # cv2.imshow('imageRecto', imageRecto)
 # cv2.waitKey(0)
@@ -31,7 +30,8 @@ Permis de conduire
 """
 chemin_recto = 'Images/permis-recto.jpg'
 chemin_verso = 'Images/permis-verso.jpg'
-def extractPermis(chemin_recto,chemin_verso):
+
+def extractPermis(chemin_recto, chemin_verso):
     # Read Image Recto
     imageRecto = cv2.imread(chemin_recto)
     imageVerso = cv2.imread(chemin_verso)
@@ -56,7 +56,7 @@ def extractPermis(chemin_recto,chemin_verso):
     """
     print("Recto")
     for i in range(5):
-        champRecto= imageRecto[yRecto:hRecto, xRecto:wRecto]
+        champRecto = imageRecto[yRecto:hRecto, xRecto:wRecto]
         img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
         recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
         time.sleep(0.2)
@@ -83,15 +83,16 @@ def extractPermis(chemin_recto,chemin_verso):
                     result.append(l)
     print(result)
 
+    """
+    Extraction verso
+    """
     yVerso = 30
     xVerso = 223
     hVerso = 43
     wVerso = 338
     verso = []
-    categories = ['AM','A1','A2','A','B1','B','C1','C','D1','D','BE','C1E','CE','D1E','DE']
-    """
-    Extraction verso
-    """
+    categories = ['AM', 'A1', 'A2', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE']
+
     print("Verso")
     for i in range(15):
         champVerso = imageVerso[yVerso:hVerso, xVerso:wVerso]
@@ -105,6 +106,9 @@ def extractPermis(chemin_recto,chemin_verso):
         if verso[i]:
             result.append(categories[i])
     print(result)
+
+
+extractPermis(chemin_recto, chemin_verso)
 
 """
     cv2.imshow('imageVerso', imageVerso)
