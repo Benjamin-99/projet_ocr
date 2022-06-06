@@ -20,6 +20,12 @@ _ana2color = '#ececec'  # Closest X11 color: 'gray92'
 nom=" "
 prenom=" "
 
+
+def return_pc(window, frame):
+    frame.destroy()
+    pc.framePCF(window)
+
+
 def framePC(window):
     framePC1 = tk.Frame(window, height=2000, width=2000, border=2)
     framePC1.place(relx=0, rely=0, relheight=1, relwidth=1)
@@ -239,30 +245,7 @@ def framePC(window):
     Entry1_2_1_1_1.configure(selectbackground="blue")
     Entry1_2_1_1_1.configure(selectforeground="white")
 
-    Label1_1_1_2 = tk.Label(framePC1)
-    Label1_1_1_2.place(relx=0.516, rely=0.353, height=36, width=67)
-    Label1_1_1_2.configure(activebackground="#f9f9f9")
-    Label1_1_1_2.configure(activeforeground="black")
-    Label1_1_1_2.configure(anchor='w')
-    Label1_1_1_2.configure(background="#d9d9d9")
-    Label1_1_1_2.configure(compound='left')
-    Label1_1_1_2.configure(disabledforeground="#a3a3a3")
-    Label1_1_1_2.configure(foreground="#000000")
-    Label1_1_1_2.configure(highlightbackground="#d9d9d9")
-    Label1_1_1_2.configure(highlightcolor="black")
-    Label1_1_1_2.configure(text='''Bande Mrz''')
 
-    Entry1_2_2 = tk.Entry(framePC1)
-    Entry1_2_2.place(relx=0.61, rely=0.363, height=30, relwidth=0.348)
-    Entry1_2_2.configure(background="white")
-    Entry1_2_2.configure(disabledforeground="#a3a3a3")
-    Entry1_2_2.configure(font="TkFixedFont")
-    Entry1_2_2.configure(foreground="#000000")
-    Entry1_2_2.configure(highlightbackground="#d9d9d9")
-    Entry1_2_2.configure(highlightcolor="black")
-    Entry1_2_2.configure(insertbackground="black")
-    Entry1_2_2.configure(selectbackground="blue")
-    Entry1_2_2.configure(selectforeground="white")
 
     """TSeparator1 = tk.SEPARATOR(framePC1)
     TSeparator1.place(relx=0.496, rely=0.191, relheight=0.63)
@@ -284,7 +267,7 @@ def framePC(window):
     Entry1_3.configure(selectforeground="white")
 
     ButtonEnregister = tk.Button(framePC1, command=lambda: getValue())
-    ButtonEnregister.place(relx=0.839, rely=0.897, height=24, width=67)
+    ButtonEnregister.place(x=700, y=509, height=34, width=67)
     ButtonEnregister.configure(activebackground="#ececec")
     ButtonEnregister.configure(activeforeground="#000000")
     ButtonEnregister.configure(background="#d9d9d9")
@@ -305,3 +288,29 @@ def framePC(window):
         date_time_str = "15/04/19"
         date_time_obj = datetime.strptime(date_time_str, '%d/%m/%y').date()
         print(nom, prenom, a, b, c, date_time_obj)
+
+    buttonExit = tk.Button(framePC1, command=lambda: exit())
+    buttonExit.place(x=780, y=509, height=34, width=67)
+    buttonExit.configure(activeforeground="#000000")
+    buttonExit.configure(background="#d9d9d9")
+    buttonExit.configure(compound='left')
+    buttonExit.configure(disabledforeground="#a3a3a3")
+    buttonExit.configure(foreground="#000000")
+    buttonExit.configure(highlightbackground="#d9d9d9")
+    buttonExit.configure(highlightcolor="black")
+    buttonExit.configure(pady="0")
+    buttonExit.configure(text='''Sortir''')
+
+    buttonReturn = tk.Button(framePC1, command=lambda : return_pc(window, framePC1))
+    buttonReturn.place(x=44, y=509, height=34, width=67)
+    buttonReturn.configure(activebackground="#ececec")
+    buttonReturn.configure(activeforeground="#000000")
+    buttonReturn.configure(background="#d9d9d9")
+    buttonReturn.configure(compound='right')
+    buttonReturn.configure(cursor="fleur")
+    buttonReturn.configure(disabledforeground="#a3a3a3")
+    buttonReturn.configure(foreground="#000000")
+    buttonReturn.configure(highlightbackground="#d9d9d9")
+    buttonReturn.configure(highlightcolor="black")
+    buttonReturn.configure(pady="0")
+    buttonReturn.configure(text='''Return''')

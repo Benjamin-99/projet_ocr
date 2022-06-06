@@ -7,12 +7,18 @@
 
 import tkinter as tk
 from tkinter import *
+import inter.CarteIdentite.CarteIdentite1 as ci
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
 _compcolor = '#d9d9d9'  # X11 color: 'gray85'
 _ana1color = '#d9d9d9'  # X11 color: 'gray85'
 _ana2color = '#ececec'  # Closest X11 color: 'gray92'
+
+
+def return_ci(window, frame):
+    frame.destroy()
+    ci.frameCI(window)
 
 
 def frameCIF(window):
@@ -383,3 +389,41 @@ def frameCIF(window):
     Entry1_1_2_1_1_1.configure(selectbackground="blue")
     Entry1_1_2_1_1_1.configure(selectforeground="white")
 
+    buttonLoadData = tk.Button(frameCIF1)
+    buttonLoadData.place(x=708, y=509, height=34, width=67)
+    buttonLoadData.configure(activebackground="#ececec")
+    buttonLoadData.configure(activeforeground="#000000")
+    buttonLoadData.configure(background="#d9d9d9")
+    buttonLoadData.configure(compound='left')
+    buttonLoadData.configure(disabledforeground="#a3a3a3")
+    buttonLoadData.configure(foreground="#000000")
+    buttonLoadData.configure(highlightbackground="#d9d9d9")
+    buttonLoadData.configure(highlightcolor="black")
+    buttonLoadData.configure(pady="0")
+    buttonLoadData.configure(text='''Enregistrer''')
+
+    buttonExit = tk.Button(frameCIF1, command=lambda: exit())
+    buttonExit.place(x=780, y=509, height=34, width=67)
+    buttonExit.configure(activeforeground="#000000")
+    buttonExit.configure(background="#d9d9d9")
+    buttonExit.configure(compound='left')
+    buttonExit.configure(disabledforeground="#a3a3a3")
+    buttonExit.configure(foreground="#000000")
+    buttonExit.configure(highlightbackground="#d9d9d9")
+    buttonExit.configure(highlightcolor="black")
+    buttonExit.configure(pady="0")
+    buttonExit.configure(text='''Sortir''')
+
+    buttonReturn = tk.Button(frameCIF1, command=lambda :return_ci(window, frameCIF1))
+    buttonReturn.place(x=44, y=509, height=34, width=67)
+    buttonReturn.configure(activebackground="#ececec")
+    buttonReturn.configure(activeforeground="#000000")
+    buttonReturn.configure(background="#d9d9d9")
+    buttonReturn.configure(compound='right')
+    buttonReturn.configure(cursor="fleur")
+    buttonReturn.configure(disabledforeground="#a3a3a3")
+    buttonReturn.configure(foreground="#000000")
+    buttonReturn.configure(highlightbackground="#d9d9d9")
+    buttonReturn.configure(highlightcolor="black")
+    buttonReturn.configure(pady="0")
+    buttonReturn.configure(text='''Return''')
