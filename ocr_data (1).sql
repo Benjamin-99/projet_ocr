@@ -121,7 +121,7 @@ CREATE TABLE `permis` (
   `date_creation` date NOT NULL,
   `date_expiration` date NOT NULL,
   `lieu_creation` varchar(20) NOT NULL,
-  `categorie` varchar(3) NOT NULL,
+  `categorie` varchar(25) NOT NULL,
   `numero_permis` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
