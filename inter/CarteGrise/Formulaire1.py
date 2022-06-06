@@ -44,34 +44,9 @@ def frameCGF(window):
     TLabelImage.configure(image=_img0)
     TLabelImage.configure(compound='left')
 
-######Civilité#####
 
-    entryCivilite = tk.Entry(rootFCG)
-    entryCivilite.place(relx=0.14, rely=0.439, height=26, relwidth=0.335)
-    entryCivilite.configure(background="white")
-    #EntryCivilite.configure(disabledforeground="#a3a3a3")
-    entryCivilite.configure(font="TkFixedFont")
-    entryCivilite.configure(foreground="#000000")
-    #EntryCivilite.configure(highlightbackground="#d9d9d9")
-    entryCivilite.configure(highlightcolor="black")
-    entryCivilite.configure(insertbackground="black")
-    #EntryCivilite.configure(selectbackground="blue")
-    entryCivilite.configure(selectforeground="white")
 
-    labelCivilite = tk.Label(rootFCG)
-    labelCivilite.place(relx=0.02, rely=0.439, height=25, width=49)
-    labelCivilite.configure(activebackground="#f9f9f9")
-    labelCivilite.configure(activeforeground="black")
-    labelCivilite.configure(anchor='w')
-    labelCivilite.configure(background="#d9d9d9")
-    labelCivilite.configure(compound='left')
-    labelCivilite.configure(disabledforeground="#a3a3a3")
-    labelCivilite.configure(foreground="#000000")
-    labelCivilite.configure(highlightbackground="#d9d9d9")
-    labelCivilite.configure(highlightcolor="black")
-    labelCivilite.configure(text='''Civilité : ''')
-
-######Nom######
+    ######Nom######
 
     entryNom = tk.Entry(rootFCG)
     entryNom.place(relx=0.141, rely=0.515, height=26, relwidth=0.335)
@@ -97,33 +72,34 @@ def frameCGF(window):
     labelNom.configure(highlightcolor="black")
     labelNom.configure(text='''Nom(s) : ''')
 
-#####Prénom#####
+    ######Civilité#####
 
-    entryPrenom = tk.Entry(rootFCG)
-    entryPrenom.place(relx=0.141, rely=0.668, height=26, relwidth=0.335)
-    entryPrenom.configure(background="white")
-    entryPrenom.configure(disabledforeground="#a3a3a3")
-    entryPrenom.configure(font="TkFixedFont")
-    entryPrenom.configure(foreground="#000000")
-    entryPrenom.configure(highlightbackground="#d9d9d9")
-    entryPrenom.configure(highlightcolor="black")
-    entryPrenom.configure(insertbackground="black")
-    entryPrenom.configure(selectbackground="blue")
-    entryPrenom.configure(selectforeground="white")
+    entryCivilite = tk.Entry(rootFCG)
+    entryCivilite.place(relx=0.14, rely=0.439, height=26, relwidth=0.335)
+    entryCivilite.configure(background="white")
+    # EntryCivilite.configure(disabledforeground="#a3a3a3")
+    entryCivilite.configure(font="TkFixedFont")
+    entryCivilite.configure(foreground="#000000")
+    # EntryCivilite.configure(highlightbackground="#d9d9d9")
+    entryCivilite.configure(highlightcolor="black")
+    entryCivilite.configure(insertbackground="black")
+    # EntryCivilite.configure(selectbackground="blue")
+    entryCivilite.configure(selectforeground="white")
 
-    labelPrenom = tk.Label(rootFCG)
-    labelPrenom.place(relx=0.02, rely=0.677, height=25, width=63)
-    labelPrenom.configure(activebackground="#f9f9f9")
-    labelPrenom.configure(activeforeground="black")
-    labelPrenom.configure(background="#d9d9d9")
-    labelPrenom.configure(compound='left')
-    labelPrenom.configure(disabledforeground="#a3a3a3")
-    labelPrenom.configure(foreground="#000000")
-    labelPrenom.configure(highlightbackground="#d9d9d9")
-    labelPrenom.configure(highlightcolor="black")
-    labelPrenom.configure(text='''Prénom(s) : ''')
+    labelCivilite = tk.Label(rootFCG)
+    labelCivilite.place(relx=0.02, rely=0.439, height=25, width=49)
+    labelCivilite.configure(activebackground="#f9f9f9")
+    labelCivilite.configure(activeforeground="black")
+    labelCivilite.configure(anchor='w')
+    labelCivilite.configure(background="#d9d9d9")
+    labelCivilite.configure(compound='left')
+    labelCivilite.configure(disabledforeground="#a3a3a3")
+    labelCivilite.configure(foreground="#000000")
+    labelCivilite.configure(highlightbackground="#d9d9d9")
+    labelCivilite.configure(highlightcolor="black")
+    labelCivilite.configure(text='''Civilité : ''')
 
-#####Nom d'usage####"
+    #####Nom d'usage####"
 
     entryNomUsage = tk.Entry(rootFCG)
     entryNomUsage.place(relx=0.141, rely=0.591, height=26, relwidth=0.335)
@@ -149,7 +125,35 @@ def frameCGF(window):
     labelNomUsage.configure(highlightcolor="black")
     labelNomUsage.configure(text='''Nom(s) d'usage:''')
 
-####Date de naissance
+
+
+    #####Prénom#####
+
+    entryPrenom = tk.Entry(rootFCG)
+    entryPrenom.place(relx=0.141, rely=0.668, height=26, relwidth=0.335)
+    entryPrenom.configure(background="white")
+    entryPrenom.configure(disabledforeground="#a3a3a3")
+    entryPrenom.configure(font="TkFixedFont")
+    entryPrenom.configure(foreground="#000000")
+    entryPrenom.configure(highlightbackground="#d9d9d9")
+    entryPrenom.configure(highlightcolor="black")
+    entryPrenom.configure(insertbackground="black")
+    entryPrenom.configure(selectbackground="blue")
+    entryPrenom.configure(selectforeground="white")
+
+    labelPrenom = tk.Label(rootFCG)
+    labelPrenom.place(relx=0.02, rely=0.677, height=25, width=63)
+    labelPrenom.configure(activebackground="#f9f9f9")
+    labelPrenom.configure(activeforeground="black")
+    labelPrenom.configure(background="#d9d9d9")
+    labelPrenom.configure(compound='left')
+    labelPrenom.configure(disabledforeground="#a3a3a3")
+    labelPrenom.configure(foreground="#000000")
+    labelPrenom.configure(highlightbackground="#d9d9d9")
+    labelPrenom.configure(highlightcolor="black")
+    labelPrenom.configure(text='''Prénom(s) : ''')
+
+    ####Date de naissance
 
     labelDateNaiss = tk.Label(rootFCG)
     labelDateNaiss.place(relx=0.02, rely=0.742, height=36, width=51)
@@ -176,7 +180,7 @@ def frameCGF(window):
     entryDateNaiss.configure(selectbackground="blue")
     entryDateNaiss.configure(selectforeground="white")
 
-#### Lieu de naissance ####
+    #### Lieu de naissance ####
 
     labelLieuNaiss = tk.Label(rootFCG)
     labelLieuNaiss.place(relx=0.288, rely=0.733, height=36, width=8)
@@ -203,7 +207,7 @@ def frameCGF(window):
     entryLieuNaiss.configure(selectbackground="blue")
     entryLieuNaiss.configure(selectforeground="white")
 
-### Date d'obtention ####
+    ### Date d'obtention ####
 
     labelDateObtention = tk.Label(rootFCG)
     labelDateObtention.place(relx=0.02, rely=0.828, height=25, width=63)
@@ -231,7 +235,7 @@ def frameCGF(window):
     entryDateObtention.configure(selectbackground="blue")
     entryDateObtention.configure(selectforeground="white")
 
-#### Lieu d'obtention ####
+    #### Lieu d'obtention ####
 
     labelLieuObtention = tk.Label(rootFCG)
     labelLieuObtention.place(relx=0.288, rely=0.828, height=25, width=63)
@@ -259,11 +263,11 @@ def frameCGF(window):
     entryLieuObtention.configure(selectbackground="blue")
     entryLieuObtention.configure(selectforeground="white")
 
-    #TSeparator1 = tk.SEPARATOR(rootFCG)
-    #TSeparator1.place(relx=0.496, rely=0.019,  relheight=0.878)
-    #TSeparator1.configure(orient="vertical")
+    # TSeparator1 = tk.SEPARATOR(rootFCG)
+    # TSeparator1.place(relx=0.496, rely=0.019,  relheight=0.878)
+    # TSeparator1.configure(orient="vertical")
 
-### Immatriculation ####
+    ### Immatriculation ####
 
     labelImmatriculation = tk.Label(rootFCG)
     labelImmatriculation.place(relx=0.500, rely=0.039, height=25, width=94)
@@ -290,34 +294,7 @@ def frameCGF(window):
     entryImmatriculation.configure(selectbackground="blue")
     entryImmatriculation.configure(selectforeground="white")
 
-#### Version ####
-
-    labelVersion = tk.Label(rootFCG)
-    labelVersion.place(relx=0.500, rely=0.212, height=25, width=65)
-    labelVersion.configure(activebackground="#f9f9f9")
-    labelVersion.configure(activeforeground="black")
-    labelVersion.configure(anchor='w')
-    labelVersion.configure(background="#d9d9d9")
-    labelVersion.configure(compound='left')
-    labelVersion.configure(disabledforeground="#a3a3a3")
-    labelVersion.configure(foreground="#000000")
-    labelVersion.configure(highlightbackground="#d9d9d9")
-    labelVersion.configure(highlightcolor="black")
-    labelVersion.configure(text='''Version : ''')
-
-    entryVersion = tk.Entry(rootFCG)
-    entryVersion.place(relx=0.673, rely=0.118, height=26, relwidth=0.297)
-    entryVersion.configure(background="white")
-    entryVersion.configure(disabledforeground="#a3a3a3")
-    entryVersion.configure(font="TkFixedFont")
-    entryVersion.configure(foreground="#000000")
-    entryVersion.configure(highlightbackground="#d9d9d9")
-    entryVersion.configure(highlightcolor="black")
-    entryVersion.configure(insertbackground="black")
-    entryVersion.configure(selectbackground="blue")
-    entryVersion.configure(selectforeground="white")
-
-#### Marque ####
+    #### Marque ####
 
     labelMarque = tk.Label(rootFCG)
     labelMarque.place(relx=0.500, rely=0.122, height=36, width=69)
@@ -332,36 +309,23 @@ def frameCGF(window):
     labelMarque.configure(highlightcolor="black")
     labelMarque.configure(text='''Marque : ''')
 
-    labelCategorie = tk.Label(rootFCG)
-    labelCategorie.place(relx=0.500, rely=0.2, height=36, width=69)
-    labelCategorie.configure(activebackground="#f9f9f9")
-    labelCategorie.configure(activeforeground="black")
-    labelCategorie.configure(anchor='w')
-    labelCategorie.configure(background="#d9d9d9")
-    labelCategorie.configure(compound='left')
-    labelCategorie.configure(disabledforeground="#a3a3a3")
-    labelCategorie.configure(foreground="#000000")
-    labelCategorie.configure(highlightbackground="#d9d9d9")
-    labelCategorie.configure(highlightcolor="black")
-    labelCategorie.configure(text='''Marque : ''')
+    EntryVersion = tk.Entry(rootFCG)
+    EntryVersion.place(relx=0.673, rely=0.2, height=26, relwidth=0.297)
+    EntryVersion.configure(background="white")
+    EntryVersion.configure(cursor="fleur")
+    EntryVersion.configure(disabledforeground="#a3a3a3")
+    EntryVersion.configure(font="TkFixedFont")
+    EntryVersion.configure(foreground="#000000")
+    EntryVersion.configure(highlightbackground="#d9d9d9")
+    EntryVersion.configure(highlightcolor="black")
+    EntryVersion.configure(insertbackground="black")
+    EntryVersion.configure(selectbackground="blue")
+    EntryVersion.configure(selectforeground="white")
 
-    EntryCategorie = tk.Entry(rootFCG)
-    EntryCategorie.place(relx=0.673, rely=0.2, height=26, relwidth=0.297)
-    EntryCategorie.configure(background="white")
-    EntryCategorie.configure(cursor="fleur")
-    EntryCategorie.configure(disabledforeground="#a3a3a3")
-    EntryCategorie.configure(font="TkFixedFont")
-    EntryCategorie.configure(foreground="#000000")
-    EntryCategorie.configure(highlightbackground="#d9d9d9")
-    EntryCategorie.configure(highlightcolor="black")
-    EntryCategorie.configure(insertbackground="black")
-    EntryCategorie.configure(selectbackground="blue")
-    EntryCategorie.configure(selectforeground="white")
+    # menubar = tk.Menu(rootFCG,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
+    # rootFCG.configure(menu = menubar)
 
-    #menubar = tk.Menu(rootFCG,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
-    #rootFCG.configure(menu = menubar)
-
-##### Code d'identification ####
+    ##### Code d'identification ####
 
     labelCodeId = tk.Label(rootFCG)
     labelCodeId.place(relx=0.500, rely=0.754, height=25, width=126)
@@ -376,7 +340,46 @@ def frameCGF(window):
     labelCodeId.configure(highlightcolor="black")
     labelCodeId.configure(text='''Code d'indentification : ''')
 
-##### Genre national ####
+    EntryCodeIdentification = tk.Entry(rootFCG)
+    EntryCodeIdentification.place(relx=0.673, rely=0.744, height=26, relwidth=0.297)
+    EntryCodeIdentification.configure(background="white")
+    EntryCodeIdentification.configure(disabledforeground="#a3a3a3")
+    EntryCodeIdentification.configure(font="TkFixedFont")
+    EntryCodeIdentification.configure(foreground="#000000")
+    EntryCodeIdentification.configure(highlightbackground="#d9d9d9")
+    EntryCodeIdentification.configure(highlightcolor="black")
+    EntryCodeIdentification.configure(insertbackground="black")
+    EntryCodeIdentification.configure(selectbackground="blue")
+    EntryCodeIdentification.configure(selectforeground="white")
+
+    entryMarque = tk.Entry(rootFCG)
+    entryMarque.place(relx=0.673, rely=0.118, height=26, relwidth=0.297)
+    entryMarque.configure(background="white")
+    entryMarque.configure(disabledforeground="#a3a3a3")
+    entryMarque.configure(font="TkFixedFont")
+    entryMarque.configure(foreground="#000000")
+    entryMarque.configure(highlightbackground="#d9d9d9")
+    entryMarque.configure(highlightcolor="black")
+    entryMarque.configure(insertbackground="black")
+    entryMarque.configure(selectbackground="blue")
+    entryMarque.configure(selectforeground="white")
+
+    #### Version ####
+
+    labelVersion = tk.Label(rootFCG)
+    labelVersion.place(relx=0.500, rely=0.212, height=25, width=65)
+    labelVersion.configure(activebackground="#f9f9f9")
+    labelVersion.configure(activeforeground="black")
+    labelVersion.configure(anchor='w')
+    labelVersion.configure(background="#d9d9d9")
+    labelVersion.configure(compound='left')
+    labelVersion.configure(disabledforeground="#a3a3a3")
+    labelVersion.configure(foreground="#000000")
+    labelVersion.configure(highlightbackground="#d9d9d9")
+    labelVersion.configure(highlightcolor="black")
+    labelVersion.configure(text='''Version : ''')
+
+    ##### Genre national ####
 
     labelGenreNat = tk.Label(rootFCG)
     labelGenreNat.place(relx=0.500, rely=0.445, height=35, width=92)
@@ -391,37 +394,22 @@ def frameCGF(window):
     labelGenreNat.configure(highlightcolor="black")
     labelGenreNat.configure(text='''Genre national : ''')
 
-    entryGenreNat = tk.Entry(rootFCG)
-    entryGenreNat.place(relx=0.673, rely=0.363, height=26, relwidth=0.297)
-    entryGenreNat.configure(background="white")
-    entryGenreNat.configure(disabledforeground="#a3a3a3")
-    entryGenreNat.configure(font="TkFixedFont")
-    entryGenreNat.configure(foreground="#000000")
-    entryGenreNat.configure(highlightbackground="#d9d9d9")
-    entryGenreNat.configure(highlightcolor="black")
-    entryGenreNat.configure(insertbackground="black")
-    entryGenreNat.configure(selectbackground="blue")
-    entryGenreNat.configure(selectforeground="white")
+    EntryGenreNational = tk.Entry(rootFCG)
+    EntryGenreNational.place(relx=0.673, rely=0.439, height=26, relwidth=0.297)
+    EntryGenreNational.configure(background="white")
+    EntryGenreNational.configure(disabledforeground="#a3a3a3")
+    EntryGenreNational.configure(font="TkFixedFont")
+    EntryGenreNational.configure(foreground="#000000")
+    EntryGenreNational.configure(highlightbackground="#d9d9d9")
+    EntryGenreNational.configure(highlightcolor="black")
+    EntryGenreNational.configure(insertbackground="black")
+    EntryGenreNational.configure(selectbackground="blue")
+    EntryGenreNational.configure(selectforeground="white")
 
-#### Catégorie #####
-
-    labelCategorie = tk.Label(rootFCG)
-    labelCategorie.place(relx=0.500, rely=0.376, height=25, width=62)
-    labelCategorie.configure(activebackground="#f9f9f9")
-    labelCategorie.configure(activeforeground="black")
-    labelCategorie.configure(anchor='w')
-    labelCategorie.configure(background="#d9d9d9")
-    labelCategorie.configure(compound='left')
-    labelCategorie.configure(disabledforeground="#a3a3a3")
-    labelCategorie.configure(foreground="#000000")
-    labelCategorie.configure(highlightbackground="#d9d9d9")
-    labelCategorie.configure(highlightcolor="black")
-    labelCategorie.configure(text='''Catégorie : ''')
-
-#### Carrosserie ####
+    #### Carrosserie ####
 
     labelCarrosserie = tk.Label(rootFCG)
-    labelCarrosserie.place(relx=0.500, rely=0.595, height=35 , width=63)
+    labelCarrosserie.place(relx=0.500, rely=0.363, height=35, width=92)
     labelCarrosserie.configure(activebackground="#f9f9f9")
     labelCarrosserie.configure(activeforeground="black")
     labelCarrosserie.configure(anchor='w')
@@ -431,26 +419,21 @@ def frameCGF(window):
     labelCarrosserie.configure(foreground="#000000")
     labelCarrosserie.configure(highlightbackground="#d9d9d9")
     labelCarrosserie.configure(highlightcolor="black")
-    labelCategorie.configure(text='''Carrosserie : ''')
+    labelCarrosserie.configure(text='''Carrosserie ''')
 
+    entryCarrosserie = tk.Entry(rootFCG)
+    entryCarrosserie.place(relx=0.673, rely=0.363, height=26, relwidth=0.297)
+    entryCarrosserie.configure(background="white")
+    entryCarrosserie.configure(disabledforeground="#a3a3a3")
+    entryCarrosserie.configure(font="TkFixedFont")
+    entryCarrosserie.configure(foreground="#000000")
+    entryCarrosserie.configure(highlightbackground="#d9d9d9")
+    entryCarrosserie.configure(highlightcolor="black")
+    entryCarrosserie.configure(insertbackground="black")
+    entryCarrosserie.configure(selectbackground="blue")
+    entryCarrosserie.configure(selectforeground="white")
 
-
-##### Cylindre #####
-
-    labelCylindre = tk.Label(rootFCG)
-    labelCylindre.place(relx=0.500, rely=0.683, height=25 , width=62)
-    labelCylindre.configure(activebackground="#f9f9f9")
-    labelCylindre.configure(activeforeground="black")
-    labelCylindre.configure(anchor='w')
-    labelCylindre.configure(background="#d9d9d9")
-    labelCylindre.configure(compound='left')
-    labelCylindre.configure(disabledforeground="#a3a3a3")
-    labelCylindre.configure(foreground="#000000")
-    labelCylindre.configure(highlightbackground="#d9d9d9")
-    labelCylindre.configure(highlightcolor="black")
-    labelCylindre.configure(text='''Cylindre : ''')
-
-##### Type de carburant #####
+    ##### Type de carburant #####
 
     labelTypeCarburant = tk.Label(rootFCG)
     labelTypeCarburant.place(relx=0.500, rely=0.527, height=25, width=112)
@@ -465,7 +448,74 @@ def frameCGF(window):
     labelTypeCarburant.configure(highlightcolor="black")
     labelTypeCarburant.configure(text='''Type de carburant : ''')
 
-##### Date de visite technique #####
+    EntryTypeCarburant = tk.Entry(rootFCG)
+    EntryTypeCarburant.place(relx=0.673, rely=0.515, height=26, relwidth=0.297)
+    EntryTypeCarburant.configure(background="white")
+    EntryTypeCarburant.configure(disabledforeground="#a3a3a3")
+    EntryTypeCarburant.configure(font="TkFixedFont")
+    EntryTypeCarburant.configure(foreground="#000000")
+    EntryTypeCarburant.configure(highlightbackground="#d9d9d9")
+    EntryTypeCarburant.configure(highlightcolor="black")
+    EntryTypeCarburant.configure(insertbackground="black")
+    EntryTypeCarburant.configure(selectbackground="blue")
+    EntryTypeCarburant.configure(selectforeground="white")
+
+    ##### Puissance #####
+
+    labelPuissance = tk.Label(rootFCG)
+    labelPuissance.place(relx=0.500, rely=0.3, height=25, width=62)
+    labelPuissance.configure(activebackground="#f9f9f9")
+    labelPuissance.configure(activeforeground="black")
+    labelPuissance.configure(anchor='w')
+    labelPuissance.configure(background="#d9d9d9")
+    labelPuissance.configure(compound='left')
+    labelPuissance.configure(disabledforeground="#a3a3a3")
+    labelPuissance.configure(foreground="#000000")
+    labelPuissance.configure(highlightbackground="#d9d9d9")
+    labelPuissance.configure(highlightcolor="black")
+    labelPuissance.configure(text='''Puissance : ''')
+
+    EntryPuissance = tk.Entry(rootFCG)
+    EntryPuissance.place(relx=0.673, rely=0.286, height=26, relwidth=0.297)
+    EntryPuissance.configure(background="white")
+    EntryPuissance.configure(disabledforeground="#a3a3a3")
+    EntryPuissance.configure(font="TkFixedFont")
+    EntryPuissance.configure(foreground="#000000")
+    EntryPuissance.configure(highlightbackground="#d9d9d9")
+    EntryPuissance.configure(highlightcolor="black")
+    EntryPuissance.configure(insertbackground="black")
+    EntryPuissance.configure(selectbackground="blue")
+    EntryPuissance.configure(selectforeground="white")
+
+    ##### Cylindre #####
+
+    labelCylindre = tk.Label(rootFCG)
+    labelCylindre.place(relx=0.500, rely=0.683, height=25, width=62)
+    labelCylindre.configure(activebackground="#f9f9f9")
+    labelCylindre.configure(activeforeground="black")
+    labelCylindre.configure(anchor='w')
+    labelCylindre.configure(background="#d9d9d9")
+    labelCylindre.configure(compound='left')
+    labelCylindre.configure(disabledforeground="#a3a3a3")
+    labelCylindre.configure(foreground="#000000")
+    labelCylindre.configure(highlightbackground="#d9d9d9")
+    labelCylindre.configure(highlightcolor="black")
+    labelCylindre.configure(text='''Cylindre : ''')
+
+    EntryCylindre = tk.Entry(rootFCG)
+    EntryCylindre.place(relx=0.673, rely=0.668, height=26, relwidth=0.297)
+    EntryCylindre.configure(background="white")
+    EntryCylindre.configure(cursor="fleur")
+    EntryCylindre.configure(disabledforeground="#a3a3a3")
+    EntryCylindre.configure(font="TkFixedFont")
+    EntryCylindre.configure(foreground="#000000")
+    EntryCylindre.configure(highlightbackground="#d9d9d9")
+    EntryCylindre.configure(highlightcolor="black")
+    EntryCylindre.configure(insertbackground="black")
+    EntryCylindre.configure(selectbackground="blue")
+    EntryCylindre.configure(selectforeground="white")
+
+    ##### Date de visite technique #####
 
     labelVisiteTech = tk.Label(rootFCG)
     labelVisiteTech.place(relx=0.500, rely=0.826, height=25, width=122)
@@ -480,98 +530,6 @@ def frameCGF(window):
     labelVisiteTech.configure(highlightcolor="black")
     labelVisiteTech.configure(text='''Date visite technique : ''')
 
-##### Puissance #####
-
-    labelPuissance = tk.Label(rootFCG)
-    labelPuissance.place(relx=0.500, rely=0.3, height=25 , width=62)
-    labelPuissance.configure(activebackground="#f9f9f9")
-    labelPuissance.configure(activeforeground="black")
-    labelPuissance.configure(anchor='w')
-    labelPuissance.configure(background="#d9d9d9")
-    labelPuissance.configure(compound='left')
-    labelPuissance.configure(disabledforeground="#a3a3a3")
-    labelPuissance.configure(foreground="#000000")
-    labelPuissance.configure(highlightbackground="#d9d9d9")
-    labelPuissance.configure(highlightcolor="black")
-    labelPuissance.configure(text='''Puissance : ''')
-
-
-
-    EntryPuissance = tk.Entry(rootFCG)
-    EntryPuissance.place(relx=0.673, rely=0.286, height=26 , relwidth=0.297)
-    EntryPuissance.configure(background="white")
-    EntryPuissance.configure(disabledforeground="#a3a3a3")
-    EntryPuissance.configure(font="TkFixedFont")
-    EntryPuissance.configure(foreground="#000000")
-    EntryPuissance.configure(highlightbackground="#d9d9d9")
-    EntryPuissance.configure(highlightcolor="black")
-    EntryPuissance.configure(insertbackground="black")
-    EntryPuissance.configure(selectbackground="blue")
-    EntryPuissance.configure(selectforeground="white")
-
-
-
-    EntryGenreNational = tk.Entry(rootFCG)
-    EntryGenreNational.place(relx=0.673, rely=0.439, height=26, relwidth=0.297)
-    EntryGenreNational.configure(background="white")
-    EntryGenreNational.configure(disabledforeground="#a3a3a3")
-    EntryGenreNational.configure(font="TkFixedFont")
-    EntryGenreNational.configure(foreground="#000000")
-    EntryGenreNational.configure(highlightbackground="#d9d9d9")
-    EntryGenreNational.configure(highlightcolor="black")
-    EntryGenreNational.configure(insertbackground="black")
-    EntryGenreNational.configure(selectbackground="blue")
-    EntryGenreNational.configure(selectforeground="white")
-
-    EntryTypeCarburant = tk.Entry(rootFCG)
-    EntryTypeCarburant.place(relx=0.673, rely=0.515, height=26 , relwidth=0.297)
-    EntryTypeCarburant.configure(background="white")
-    EntryTypeCarburant.configure(disabledforeground="#a3a3a3")
-    EntryTypeCarburant.configure(font="TkFixedFont")
-    EntryTypeCarburant.configure(foreground="#000000")
-    EntryTypeCarburant.configure(highlightbackground="#d9d9d9")
-    EntryTypeCarburant.configure(highlightcolor="black")
-    EntryTypeCarburant.configure(insertbackground="black")
-    EntryTypeCarburant.configure(selectbackground="blue")
-    EntryTypeCarburant.configure(selectforeground="white")
-
-    Entry1_2_4 = tk.Entry(rootFCG)
-    Entry1_2_4.place(relx=0.673, rely=0.592, height=26, relwidth=0.297)
-    Entry1_2_4.configure(background="white")
-    Entry1_2_4.configure(disabledforeground="#a3a3a3")
-    Entry1_2_4.configure(font="TkFixedFont")
-    Entry1_2_4.configure(foreground="#000000")
-    Entry1_2_4.configure(highlightbackground="#d9d9d9")
-    Entry1_2_4.configure(highlightcolor="black")
-    Entry1_2_4.configure(insertbackground="black")
-    Entry1_2_4.configure(selectbackground="blue")
-    Entry1_2_4.configure(selectforeground="white")
-
-    EntryCylindre = tk.Entry(rootFCG)
-    EntryCylindre.place(relx=0.673, rely=0.668, height=26 , relwidth=0.297)
-    EntryCylindre.configure(background="white")
-    EntryCylindre.configure(cursor="fleur")
-    EntryCylindre.configure(disabledforeground="#a3a3a3")
-    EntryCylindre.configure(font="TkFixedFont")
-    EntryCylindre.configure(foreground="#000000")
-    EntryCylindre.configure(highlightbackground="#d9d9d9")
-    EntryCylindre.configure(highlightcolor="black")
-    EntryCylindre.configure(insertbackground="black")
-    EntryCylindre.configure(selectbackground="blue")
-    EntryCylindre.configure(selectforeground="white")
-
-    EntryCodeIdentification = tk.Entry(rootFCG)
-    EntryCodeIdentification.place(relx=0.673, rely=0.744, height=26, relwidth=0.297)
-    EntryCodeIdentification.configure(background="white")
-    EntryCodeIdentification.configure(disabledforeground="#a3a3a3")
-    EntryCodeIdentification.configure(font="TkFixedFont")
-    EntryCodeIdentification.configure(foreground="#000000")
-    EntryCodeIdentification.configure(highlightbackground="#d9d9d9")
-    EntryCodeIdentification.configure(highlightcolor="black")
-    EntryCodeIdentification.configure(insertbackground="black")
-    EntryCodeIdentification.configure(selectbackground="blue")
-    EntryCodeIdentification.configure(selectforeground="white")
-
     EntryDateVisiteTech = tk.Entry(rootFCG)
     EntryDateVisiteTech.place(relx=0.673, rely=0.821, height=26, relwidth=0.297)
     EntryDateVisiteTech.configure(background="white")
@@ -584,6 +542,31 @@ def frameCGF(window):
     EntryDateVisiteTech.configure(selectbackground="blue")
     EntryDateVisiteTech.configure(selectforeground="white")
 
+    ##Categorie
+    labelCategorie = tk.Label(rootFCG)
+    labelCategorie.place(relx=0.500, rely=0.592, height=25, width=62)
+    labelCategorie.configure(activebackground="#f9f9f9")
+    labelCategorie.configure(activeforeground="black")
+    labelCategorie.configure(anchor='w')
+    labelCategorie.configure(background="#d9d9d9")
+    labelCategorie.configure(compound='left')
+    labelCategorie.configure(disabledforeground="#a3a3a3")
+    labelCategorie.configure(foreground="#000000")
+    labelCategorie.configure(highlightbackground="#d9d9d9")
+    labelCategorie.configure(highlightcolor="black")
+    labelCategorie.configure(text='''Catégorie : ''')
+
+    EntryCategorie = tk.Entry(rootFCG)
+    EntryCategorie.place(relx=0.673, rely=0.592, height=26, relwidth=0.297)
+    EntryCategorie.configure(background="white")
+    EntryCategorie.configure(disabledforeground="#a3a3a3")
+    EntryCategorie.configure(font="TkFixedFont")
+    EntryCategorie.configure(foreground="#000000")
+    EntryCategorie.configure(highlightbackground="#d9d9d9")
+    EntryCategorie.configure(highlightcolor="black")
+    EntryCategorie.configure(insertbackground="black")
+    EntryCategorie.configure(selectbackground="blue")
+    EntryCategorie.configure(selectforeground="white")
 
     buttonLoadData = tk.Button(rootFCG)
     buttonLoadData.place(x=708, y=509, height=34, width=67)
@@ -610,7 +593,7 @@ def frameCGF(window):
     buttonExit.configure(pady="0")
     buttonExit.configure(text='''Sortir''')
 
-    buttonReturn = tk.Button(rootFCG, command=lambda : return_cg(window, rootFCG))
+    buttonReturn = tk.Button(rootFCG, command=lambda: return_cg(window, rootFCG))
     buttonReturn.place(x=44, y=509, height=34, width=67)
     buttonReturn.configure(activebackground="#ececec")
     buttonReturn.configure(activeforeground="#000000")
@@ -623,4 +606,7 @@ def frameCGF(window):
     buttonReturn.configure(highlightcolor="black")
     buttonReturn.configure(pady="0")
     buttonReturn.configure(text='''Return''')
+
+
+
 
