@@ -9,23 +9,25 @@ import inter.CarteIdentite.Formulaire1 as cif
 
 
 def upload_file(labelImg, labelPath):
-    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", '.png')])
-    image = Image.open(image_Path)
-    image.thumbnail((350, 450))
-    image = ImageTk.PhotoImage(image)
-    labelImg.configure(image=image)
-    labelImg.image = image
-    labelPath.configure(text=image_Path)
+    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", "*.png; *.jpg; *.jpeg")])
+    if image_Path:
+        image = Image.open(image_Path)
+        image.thumbnail((350, 450))
+        image = ImageTk.PhotoImage(image)
+        labelImg.configure(image=image)
+        labelImg.image = image
+        labelPath.configure(text=image_Path)
 
 
 def upload_file1(labelImg, labelPath):
-    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", '.png')])
-    image = Image.open(image_Path)
-    image.thumbnail((350, 450))
-    image = ImageTk.PhotoImage(image)
-    labelImg.configure(image=image)
-    labelImg.image = image
-    labelPath.configure(text=image_Path)
+    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", "*.png; *.jpg; *.jpeg")])
+    if image_Path:
+        image = Image.open(image_Path)
+        image.thumbnail((350, 450))
+        image = ImageTk.PhotoImage(image)
+        labelImg.configure(image=image)
+        labelImg.image = image
+        labelPath.configure(text=image_Path)
 
 
 def frameCI(window):

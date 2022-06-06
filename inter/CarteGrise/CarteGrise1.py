@@ -11,14 +11,15 @@ x = "abc"
 
 
 def upload_file(label):
-    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", '.png')])
-    image = Image.open(image_Path)
-    image.thumbnail((350, 450))
-    image = ImageTk.PhotoImage(image)
-    label.configure(image=image)
-    label.image = image
-    x=image_Path
-    print(x)
+    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("images files", "*.png; *.jpg; *.jpeg")])
+    if image_Path:
+        image = Image.open(image_Path)
+        image.thumbnail((350, 450))
+        image = ImageTk.PhotoImage(image)
+        label.configure(image=image)
+        label.image = image
+        x=image_Path
+        print(x)
 
 
 def goToExtract(window, frame):

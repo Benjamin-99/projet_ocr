@@ -11,23 +11,25 @@ tableau = ("MAPA", "Vanessa", 15)
 
 
 def upload_file(label, label2):
-    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", '.png')])
-    image = Image.open(image_Path)
-    image.thumbnail((350, 450))
-    image = ImageTk.PhotoImage(image)
-    label.configure(image=image)
-    label.image = image
-    label2.configure(text=image_Path)
+    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", "*.png; *.jpg; *.jpeg")])
+    if image_Path:
+        image = Image.open(image_Path)
+        image.thumbnail((350, 450))
+        image = ImageTk.PhotoImage(image)
+        label.configure(image=image)
+        label.image = image
+        label2.configure(text=image_Path)
 
 
 def upload_file1(label1, labelPath2):
-    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", '.png')])
-    image = Image.open(image_Path)
-    image.thumbnail((350, 450))
-    image = ImageTk.PhotoImage(image)
-    label1.configure(image=image)
-    label1.image = image
-    labelPath2.configure(text=image_Path)
+    image_Path = filedialog.askopenfilename(initialdir='C:\\', filetypes=[("png files", "*.png; *.jpg; *.jpeg")])
+    if image_Path:
+        image = Image.open(image_Path)
+        image.thumbnail((350, 450))
+        image = ImageTk.PhotoImage(image)
+        label1.configure(image=image)
+        label1.image = image
+        labelPath2.configure(text=image_Path)
 
 
 def framePCF(window):
