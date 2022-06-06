@@ -40,7 +40,7 @@ def framePC(window):
     EntryNom.configure(font="TkFixedFont")
     EntryNom.configure(foreground="#000000")
     EntryNom.configure(insertbackground="black")
-    EntryNom.insert(0, pc.tableau.__getitem__(0))
+    EntryNom.insert(0, pc.permis[0])
 
     EntryPrenom = tk.Entry(framePC1)
     EntryPrenom.place(relx=0.14, rely=0.515, height=30, relwidth=0.335)
@@ -53,7 +53,7 @@ def framePC(window):
     EntryPrenom.configure(insertbackground="black")
     EntryPrenom.configure(selectbackground="blue")
     EntryPrenom.configure(selectforeground="white")
-    EntryPrenom.insert(0, pc.tableau.__getitem__(1))
+    EntryPrenom.insert(0, pc.permis[1])
 
     Label1 = tk.Label(framePC1)
     Label1.place(relx=0.064, rely=0.363, height=25, width=45)
@@ -142,6 +142,10 @@ def framePC(window):
     EntryCategorie.configure(insertbackground="black")
     EntryCategorie.configure(selectbackground="blue")
     EntryCategorie.configure(selectforeground="white")
+    categories = ""
+    for i in range(9,len(pc.permis)):
+        categories = categories + " " + pc.permis[i]
+    EntryCategorie.insert(0,categories)
 
     LabelDateEtablissement = tk.Label(framePC1)
     LabelDateEtablissement.place(relx=0.524, rely=0.706, height=25, width=62)
@@ -167,6 +171,7 @@ def framePC(window):
     EntryDateEtablissement.configure(insertbackground="black")
     EntryDateEtablissement.configure(selectbackground="blue")
     EntryDateEtablissement.configure(selectforeground="white")
+    EntryDateEtablissement.insert(0, pc.permis[5])
 
     LabelLieuEtablissement = tk.Label(framePC1)
     LabelLieuEtablissement.place(relx=0.761, rely=0.716, height=15, width=10)
@@ -193,6 +198,7 @@ def framePC(window):
     EntryLieuEtablissement.configure(insertbackground="black")
     EntryLieuEtablissement.configure(selectbackground="blue")
     EntryLieuEtablissement.configure(selectforeground="white")
+    EntryLieuEtablissement.insert(0, pc.permis[6])
 
     EntryDateNaissance = tk.Entry(framePC1)
     EntryDateNaissance.place(relx=0.14, rely=0.706, height=30, relwidth=0.145)
@@ -205,6 +211,7 @@ def framePC(window):
     EntryDateNaissance.configure(insertbackground="black")
     EntryDateNaissance.configure(selectbackground="blue")
     EntryDateNaissance.configure(selectforeground="white")
+    EntryDateNaissance.insert(0, pc.permis[2])
 
     EntryLieuNaissance = tk.Entry(framePC1)
     EntryLieuNaissance.place(relx=0.305, rely=0.704, height=30, relwidth=0.17)
@@ -218,6 +225,7 @@ def framePC(window):
     EntryLieuNaissance.configure(insertbackground="black")
     EntryLieuNaissance.configure(selectbackground="blue")
     EntryLieuNaissance.configure(selectforeground="white")
+    EntryLieuNaissance.insert(0, pc.permis[3])
 
     Label1_2_2_2 = tk.Label(framePC1)
     Label1_2_2_2.place(relx=0.521, rely=0.515, height=25, width=62)
@@ -244,6 +252,7 @@ def framePC(window):
     EntryExpireLe.configure(insertbackground="black")
     EntryExpireLe.configure(selectbackground="blue")
     EntryExpireLe.configure(selectforeground="white")
+    EntryExpireLe.insert(0, pc.permis[7])
 
 
 
@@ -265,6 +274,7 @@ def framePC(window):
     EntryNumPermis.configure(insertbackground="black")
     EntryNumPermis.configure(selectbackground="blue")
     EntryNumPermis.configure(selectforeground="white")
+    EntryNumPermis.insert(0, pc.permis[8])
 
     ButtonEnregister = tk.Button(framePC1, command=lambda: getValue())
     ButtonEnregister.place(x=700, y=509, height=34, width=67)
