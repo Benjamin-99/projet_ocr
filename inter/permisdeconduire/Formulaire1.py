@@ -10,6 +10,8 @@ import tkinter as tk
 from datetime import datetime
 from tkinter import *
 import inter.permisdeconduire.PermisDeConduire1 as pc
+from Classes import PermisClass
+import database_connection as dbc
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
@@ -289,15 +291,23 @@ def framePC(window):
     ButtonEnregister.configure(pady="0")
     ButtonEnregister.configure(text='''Enregistrer''')
 
+    def calcul(date):
+        date2 = date.split(".")
+        date3 = date2[2] + "-" + date2[1] + "-" + date2[0]
+        return date3
+
     def getValue():
-        nom = EntryNom.get()
-        prenom = EntryPrenom.get()
+        p = PermisClass(EntryNom.get(), EntryPrenom.get(), calcul(EntryDateNaissance.get()), EntryLieuNaissance.get(),
+                        calcul(EntryDateEtablissement.get()), calcul(EntryExpireLe.get()), EntryLieuEtablissement.get(),
+                        EntryCategorie.get(), EntryNumPermis.get())
+
+        dbc.save_permis(p)
         a = "123"
         b = float(a)
         c = int (a)
         date_time_str = "15/04/19"
         date_time_obj = datetime.strptime(date_time_str, '%d/%m/%y').date()
-        print(nom, prenom, a, b, c, date_time_obj)
+        print(a, b, c, date_time_obj)
 
     buttonExit = tk.Button(framePC1, command=lambda: exit())
     buttonExit.place(x=780, y=509, height=34, width=67)
