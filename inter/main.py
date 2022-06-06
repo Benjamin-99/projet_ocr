@@ -12,6 +12,6 @@ window.minsize(120, 1)
 window.maxsize(1370, 749)
 
 window.resizable(0, 0)
-window.title("Toplevel 0")
+window.title("Extract ++")
 window.configure(background="#d9d9d9")
 window.mainloop()
