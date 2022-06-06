@@ -105,10 +105,10 @@ def extractPermis(chemin_recto, chemin_verso):
     for i in range(15):
         if verso[i]:
             result.append(categories[i])
-    print(result)
+    return result
 
 
-extractPermis(chemin_recto, chemin_verso)
+#extractPermis(chemin_recto, chemin_verso)
 
 """
     cv2.imshow('imageVerso', imageVerso)

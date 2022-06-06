@@ -6,8 +6,12 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import inter.buttonTemplate as bt
 import inter.permisdeconduire.Formulaire1 as cpf
+import Pretraitement
 
 tableau = ("MAPA", "Vanessa", 15)
+pathRecto = ""
+pathVerso = ""
+permis = ["Richard", "Nanda"]
 
 
 def upload_file(label, label2):
@@ -19,6 +23,9 @@ def upload_file(label, label2):
         label.configure(image=image)
         label.image = image
         label2.configure(text=image_Path)
+        global pathRecto
+        pathRecto = image_Path
+    print(pathRecto)
 
 
 def upload_file1(label1, labelPath2):
@@ -30,6 +37,9 @@ def upload_file1(label1, labelPath2):
         label1.configure(image=image)
         label1.image = image
         labelPath2.configure(text=image_Path)
+        global pathVerso
+        pathVerso = image_Path
+    print(pathVerso)
 
 
 def framePCF(window):
@@ -66,7 +76,7 @@ def framePCF(window):
     btn.configure(highlightbackground="#d9d9d9")
     btn.configure(highlightcolor="black")
     btn.configure(pady="0")
-    btn.configure(text='''choisir''')
+    btn.configure(text='''Choisir recto''')
 
     labelPath2 = tk.Label(framePCF1)
     labelPath2.place(x=560, y=90, height=27, width=268)
@@ -92,7 +102,7 @@ def framePCF(window):
     btn3.configure(highlightbackground="#d9d9d9")
     btn3.configure(highlightcolor="black")
     btn3.configure(pady="0")
-    btn3.configure(text='''choisir2''')
+    btn3.configure(text='''Choisir verso''')
 
     ###################label choice 1
     label2 = Label(framePCF1)
@@ -122,7 +132,6 @@ def framePCF(window):
     label1.configure(highlightcolor="black")
     label1.configure(highlightthickness="3")
 
-
     labelTitle = tk.Label(framePCF1)
     labelTitle.place(x=220, y=20, height=41, width=395)
     labelTitle.configure(activebackground="#f9f9f9")
@@ -137,7 +146,8 @@ def framePCF(window):
     labelTitle.configure(relief="solid")
     labelTitle.configure(text='''PERMIS DE CONDUIRE''')
 
-    buttonExtract = tk.Button(framePCF1, command=lambda: cpf.framePC(window))
+    buttonExtract = tk.Button(framePCF1,
+                              command=lambda: getPathsAndExtract(window))
     buttonExtract.place(x=710, y=500, height=34, width=67)
     buttonExtract.configure(activebackground="#ececec")
     buttonExtract.configure(activeforeground="#000000")
@@ -155,5 +165,14 @@ def framePCF(window):
     bt.button_exit(framePCF1)
 
 
-
-
+def getPathsAndExtract(window):
+    print("Extract")
+    global pathVerso
+    print(pathVerso)
+    global pathRecto
+    print(pathRecto)
+    if pathVerso != "" and pathRecto != "":
+        global permis
+        permis = Pretraitement.extractPermis(pathRecto, pathVerso)
+        print(permis)
+    cpf.framePC(window)
