@@ -166,11 +166,11 @@ def framePCF(window):
 
 
 def getPathsAndExtract(window):
-    print("Extract")
+    #print("Extract")
     global pathVerso
-    print(pathVerso)
+    #print(pathVerso)
     global pathRecto
-    print(pathRecto)
+    #print(pathRecto)
     if pathVerso != "" and pathRecto != "":
         global permis
         permis = Pretraitement.extractPermis(pathRecto, pathVerso)
