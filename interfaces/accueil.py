@@ -2,11 +2,7 @@
 import tkinter as tk
 from tkinter import *
 
-
-
-
-home = Tk()
-
+home = tk.Tk()
 # Frame
 home.geometry("210x160")
 
@@ -38,14 +34,14 @@ def choice_btn():
 # Radio button
 fileChoice = IntVar()
 rb1 = Radiobutton(home, text="Gray card", value=1, variable=fileChoice)
-rb2 = Radiobutton(home, text="Id card", value=2, variable=fileChoice)
-rb3 = Radiobutton(home, text="Driver License", value=3, variable=fileChoice)
 rb1.pack()
+rb2 = Radiobutton(home, text="Id card", value=2, variable=fileChoice)
 rb2.pack()
+rb3 = Radiobutton(home, text="Driver License", value=3, variable=fileChoice)
 rb3.pack()
 
-rb1.select()
+#rb1.select()
 
-cmd = Button(home, text="Ok", command=choice_btn)
+cmd = Button(home, text="Ok", command=lambda: choice_btn())
 cmd.pack()
 home.mainloop()

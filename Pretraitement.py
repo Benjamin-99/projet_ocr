@@ -9,6 +9,7 @@ from cv2 import cv2
 import numpy as np
 import easyocr
 import time
+import threading
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -30,6 +31,8 @@ Permis de conduire
 """
 chemin_recto = 'Images/permis-recto.jpg'
 chemin_verso = 'Images/permis-verso.jpg'
+result = []
+
 
 def extractPermis(chemin_recto, chemin_verso):
     # Read Image Recto
@@ -42,35 +45,46 @@ def extractPermis(chemin_recto, chemin_verso):
     # Echalonage
     imageRecto = cv2.resize(imageRecto, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
     imageVerso = cv2.resize(imageVerso, (506, 316), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+    t1 = threading.Thread(target=extractRecto, args=(imageRecto,))
+    t2 = threading.Thread(target=extractVerso, args=(imageVerso,))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+    global result
+    print(result)
+    return result
 
+
+def extractRecto(imageRecto):
     # Recadrage de la zone de texte
     yRecto = 65
     xRecto = 164
     hRecto = 80
     wRecto = 310
     recto = []
-    result = []
 
     """
     Extraction recto
     """
-    print("Recto")
+    #print("Recto")
     for i in range(5):
         champRecto = imageRecto[yRecto:hRecto, xRecto:wRecto]
         img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
         recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
-        time.sleep(0.2)
+        #time.sleep(0.2)
         yRecto = yRecto + 20
         hRecto = hRecto + 20
 
     img = cv2.cvtColor(imageRecto[160:175, xRecto:wRecto], cv2.COLOR_BGR2GRAY)
     recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
-    time.sleep(0.2)
-    print(recto)
+    #time.sleep(0.2)
+    #print(recto)
 
     """
     Traitement du recto
     """
+    global result
     for elt in recto:
         for i in elt:
             lt = i.split(' ')
@@ -81,8 +95,10 @@ def extractPermis(chemin_recto, chemin_verso):
                     result.append(l[:3])
                 elif not (l.__contains__("4c")):
                     result.append(l)
-    print(result)
+    #print(result)
 
+
+def extractVerso(imageVerso):
     """
     Extraction verso
     """
@@ -93,22 +109,23 @@ def extractPermis(chemin_recto, chemin_verso):
     verso = []
     categories = ['AM', 'A1', 'A2', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE']
 
-    print("Verso")
+    #print("Verso")
     for i in range(15):
         champVerso = imageVerso[yVerso:hVerso, xVerso:wVerso]
         img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
         verso.append(easyocr.Reader(['fr'], gpu=True).readtext(champVerso, detail=0))
-        time.sleep(0.2)
+        #time.sleep(0.2)
         yVerso = yVerso + 15
         hVerso = hVerso + 15
 
     for i in range(15):
         if verso[i]:
+            global result
             result.append(categories[i])
-    print(result)
 
 
-extractPermis(chemin_recto, chemin_verso)
+
+#extractPermis(chemin_recto, chemin_verso)
 
 """
     cv2.imshow('imageVerso', imageVerso)
