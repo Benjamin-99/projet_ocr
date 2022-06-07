@@ -21,7 +21,7 @@ cni_verso_path = 'Images/cniverso.png'
 # otsu et après binairisation
 
 def permirecto(cni_recto_path):
-    def perfection(file_name, new_file_name):
+    def perfection(file_name):
         img = Image.open(file_name)
         largeur_image, hauteur_image = img.size
         for y in range(hauteur_image):
@@ -29,19 +29,18 @@ def permirecto(cni_recto_path):
                 t, r, v, b = img.getpixel((x, y))
                 if (145 < t < 220) or (145 < r < 220) or (150 < v < 255):
                     img.putpixel((x, y), (255, 255, 255, 255))
-        img.save(new_file_name)
-
-    perfection(cni_recto_path, 'Images/rectotraite.png')
+        return img
 
     # Read Image Recto
-    imageRecto = cv2.imread('Images/rectotraite.png')
+    imageRecto = perfection(cni_recto_path)
 
     """
     Pré-traitement classique
     """
 
     # Echalonage
-    imageRecto = cv2.resize(imageRecto, (506, 322), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+    newsize = (506, 322)
+    imageRecto = imageRecto.resize(newsize)
 
     # Recadrage de la zone de texte
     yRecto = 0
@@ -51,9 +50,9 @@ def permirecto(cni_recto_path):
     recto = []
 
     def threshold(xRecto, yRecto, hRecto, wRecto):
-        champRecto = imageRecto[yRecto:hRecto, xRecto:wRecto]
-        img = cv2.cvtColor(champRecto, cv2.COLOR_BGR2GRAY)
-        recto.append(easyocr.Reader(['fr'], gpu=True).readtext(img, detail=0))
+        champRecto = imageRecto.crop((xRecto, yRecto, wRecto, hRecto))
+        champRectoResult = np.array(champRecto)
+        recto.append(easyocr.Reader(['fr'], gpu=True).readtext(champRectoResult, detail=0))
 
     # Pays
     threshold(xRecto, yRecto, hRecto, wRecto)
@@ -116,6 +115,7 @@ def permiverso(cni_verso_path):
     hRecto = 55
     wRecto = 200
     verso = []
+
     def thresholdverso(xRecto, yRecto, hRecto, wRecto):
         champVerso = imageVerso[yRecto:hRecto, xRecto:wRecto]
         img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
@@ -139,6 +139,4 @@ def permiverso(cni_verso_path):
     print(verso)
     return verso
 
-
-permiverso(cni_verso_path)
-
+permirecto(cni_recto_path)
