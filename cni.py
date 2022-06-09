@@ -107,8 +107,11 @@ def permirecto(cni_recto_path):
 
 
 def permiverso(cni_verso_path):
-    imageVerso = cv2.imread(cni_verso_path)
-    imageVerso = cv2.resize(imageVerso, (506, 322), fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
+
+    imageVerso = Image.open(cni_verso_path)
+    newsize = (506, 322)
+    imageVerso = imageVerso.resize(newsize)
+
     # Taille
     yRecto = 26
     xRecto = 136
@@ -117,10 +120,9 @@ def permiverso(cni_verso_path):
     verso = []
 
     def thresholdverso(xRecto, yRecto, hRecto, wRecto):
-        champVerso = imageVerso[yRecto:hRecto, xRecto:wRecto]
-        img = cv2.cvtColor(champVerso, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite('Images/versotraite.png', img)
-        verso.append(easyocr.Reader(['fr'], gpu=True).readtext(champVerso, detail=0))
+        champRecto = imageVerso.crop((xRecto, yRecto, wRecto, hRecto))
+        champRectoResult = np.array(champRecto)
+        verso.append(easyocr.Reader(['fr'], gpu=True).readtext(champRectoResult, detail=0))
 
     thresholdverso(xRecto, yRecto, hRecto, wRecto)
     # Date de délivrance
@@ -131,12 +133,14 @@ def permiverso(cni_verso_path):
     thresholdverso(xRecto, yRecto, hRecto, wRecto)
 
     # Adresse
-    xRecto = 135
-    yRecto = 58
-    hRecto = 140
-    wRecto = 500
+    xRecto = 130
+    yRecto = 54
+    hRecto = 150
+    wRecto = 400
     thresholdverso(xRecto, yRecto, hRecto, wRecto)
+
     print(verso)
     return verso
 
 permirecto(cni_recto_path)
+permiverso(cni_verso_path)
