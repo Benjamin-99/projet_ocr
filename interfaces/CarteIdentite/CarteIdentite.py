@@ -26,13 +26,13 @@ def upload_file1():
     labelPath2.configure(text=image_Path)
 
 def return_home():
-    root.destroy()
+    rootIC.destroy()
     import interfaces.accueil
 
-root = Tk()
+rootIC = tk.Tk()
 
 ##################image recto
-label = Label(root)
+label = Label(rootIC)
 label.place(x=44, y=152, height=266, width=368)
 label.configure(activebackground="#0d0003")
 label.configure(activeforeground="white")
@@ -47,7 +47,7 @@ label.configure(highlightcolor="black")
 label.configure(highlightthickness="3")
 
 ########button choisir 1
-btn = Button(root, command=upload_file)
+btn = Button(rootIC, command=upload_file)
 btn.place(x=44, y=80, height=34, width=67)
 btn.configure(activebackground="#ececec")
 btn.configure(activeforeground="#000000")
@@ -61,7 +61,7 @@ btn.configure(pady="0")
 btn.configure(text='''choisir''')
 
 #################### button choice 2 ################################
-btn3 = Button(root, command=upload_file1)
+btn3 = Button(rootIC, command=upload_file1)
 btn3.place(x=460, y=80, height=34, width=67)
 btn3.configure(activebackground="#ececec")
 btn3.configure(activeforeground="#000000")
@@ -75,7 +75,7 @@ btn3.configure(pady="0")
 btn3.configure(text='''choisir2''')
 
 ###################label choice 1
-label2 = Label(root)
+label2 = Label(rootIC)
 label2.place(x=140, y=90, height=27, width=268)
 label2.configure(activebackground="#f9f9f9")
 label2.configure(activeforeground="black")
@@ -88,7 +88,7 @@ label2.configure(highlightbackground="#d9d9d9")
 label2.configure(highlightcolor="black")
 
 #######img verso
-label1 = Label(root)
+label1 = Label(rootIC)
 label1.place(x=460, y=150, height=266, width=369)
 label1.configure(activebackground="#0d0003")
 label1.configure(activeforeground="white")
@@ -103,7 +103,7 @@ label1.configure(highlightcolor="black")
 label1.configure(highlightthickness="3")
 
 #################label choice 2
-label3 = Label(root)
+label3 = Label(rootIC)
 label3.place(x=540, y=86, height=27, width=368)
 label3.configure(activebackground="#f9f9f9")
 label3.configure(activeforeground="black")
@@ -115,7 +115,7 @@ label3.configure(foreground="#000000")
 label3.configure(highlightbackground="#d9d9d9")
 label3.configure(highlightcolor="black")
 
-labelTitle = tk.Label(root)
+labelTitle = tk.Label(rootIC)
 labelTitle.place(x=220, y=20, height=41, width=395)
 labelTitle.configure(activebackground="#f9f9f9")
 labelTitle.configure(activeforeground="black")
@@ -129,7 +129,7 @@ labelTitle.configure(highlightcolor="black")
 labelTitle.configure(relief="solid")
 labelTitle.configure(text='''CARTE D'IDENTITE ''')
 
-buttonReturn = tk.Button(root, command=lambda: return_home())
+buttonReturn = tk.Button(rootIC, command=lambda: return_home())
 buttonReturn.place(x=44, y=500, height=34, width=67)
 buttonReturn.configure(activebackground="#ececec")
 buttonReturn.configure(activeforeground="#000000")
@@ -143,7 +143,7 @@ buttonReturn.configure(highlightcolor="black")
 buttonReturn.configure(pady="0")
 buttonReturn.configure(text='''Return''')
 
-buttonExtract = tk.Button(root)
+buttonExtract = tk.Button(rootIC)
 buttonExtract.place(x=760, y=500, height=34, width=67)
 buttonExtract.configure(activebackground="#ececec")
 buttonExtract.configure(activeforeground="#000000")
@@ -157,7 +157,7 @@ buttonExtract.configure(highlightcolor="black")
 buttonExtract.configure(pady="0")
 buttonExtract.configure(text='''Extract''')
 
-buttonExit = tk.Button(root, command=lambda: exit())
+buttonExit = tk.Button(rootIC, command=lambda: exit())
 buttonExit.place(x=660, y=500, height=34, width=67)
 buttonExit.configure(activebackground="#ececec")
 buttonExit.configure(activeforeground="#000000")
@@ -170,7 +170,7 @@ buttonExit.configure(highlightcolor="black")
 buttonExit.configure(pady="0")
 buttonExit.configure(text='''Exit''')
 
-labelPath2 = tk.Label(root)
+labelPath2 = tk.Label(rootIC)
 labelPath2.place(x=560, y=86, height=27, width=268)
 labelPath2.configure(activebackground="#f9f9f9")
 labelPath2.configure(activeforeground="black")
@@ -182,16 +182,16 @@ labelPath2.configure(foreground="#000000")
 labelPath2.configure(highlightbackground="#d9d9d9")
 labelPath2.configure(highlightcolor="black")
 
-root.title("Image Browser")
-root.geometry("872x568+219+46")
-root.minsize(120, 1)
-root.maxsize(1370, 749)
-root.resizable(0, 0)
-root.title("Toplevel 0")
-root.configure(background="#bebebe")
+rootIC.title("Image Browser")
+rootIC.geometry("872x568+219+46")
+rootIC.minsize(120, 1)
+rootIC.maxsize(1370, 749)
+rootIC.resizable(0, 0)
+rootIC.title("Toplevel 0")
+rootIC.configure(background="#bebebe")
 
 
 
-root.mainloop()
+rootIC.mainloop()
 
 
