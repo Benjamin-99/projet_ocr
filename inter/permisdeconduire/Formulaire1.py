@@ -9,6 +9,7 @@ import sys
 import tkinter as tk
 from datetime import datetime
 from tkinter import *
+import inter.buttonTemplate
 import inter.permisdeconduire.PermisDeConduire1 as pc
 from Classes import PermisClass
 import database_connection as dbc
@@ -302,14 +303,21 @@ def framePC(window):
                         EntryCategorie.get(), EntryNumPermis.get())
 
         dbc.save_permis(p)
-        a = "123"
-        b = float(a)
-        c = int (a)
-        date_time_str = "15/04/19"
-        date_time_obj = datetime.strptime(date_time_str, '%d/%m/%y').date()
-        print(a, b, c, date_time_obj)
+        ButtonEnregister.configure(state='disabled')
+        labelValidation = tk.Label(framePC1)
+        labelValidation.place(relx=0.5, rely=0.880, height=66, width=120)
+        labelValidation.configure(activebackground="#f9f9f9")
+        labelValidation.configure(activeforeground="black")
+        labelValidation.configure(anchor='w')
+        labelValidation.configure(background="#d9d9d9")
+        labelValidation.configure(compound='left')
+        labelValidation.configure(disabledforeground="#a3a3a3")
+        labelValidation.configure(foreground="#000000")
+        labelValidation.configure(highlightbackground="#d9d9d9")
+        labelValidation.configure(highlightcolor="green")
+        labelValidation.configure(text='''Données validées!''')
 
-    buttonExit = tk.Button(framePC1, command=lambda: exit())
+    buttonExit = tk.Button(framePC1, command=lambda: inter.buttonTemplate.return_home(window,framePC1))
     buttonExit.place(x=780, y=509, height=34, width=67)
     buttonExit.configure(activeforeground="#000000")
     buttonExit.configure(background="#d9d9d9")
@@ -319,7 +327,7 @@ def framePC(window):
     buttonExit.configure(highlightbackground="#d9d9d9")
     buttonExit.configure(highlightcolor="black")
     buttonExit.configure(pady="0")
-    buttonExit.configure(text='''Sortir''')
+    buttonExit.configure(text='''Menu''')
 
     buttonReturn = tk.Button(framePC1, command=lambda : return_pc(window, framePC1))
     buttonReturn.place(x=44, y=509, height=34, width=67)
@@ -327,7 +335,6 @@ def framePC(window):
     buttonReturn.configure(activeforeground="#000000")
     buttonReturn.configure(background="#d9d9d9")
     buttonReturn.configure(compound='right')
-    buttonReturn.configure(cursor="fleur")
     buttonReturn.configure(disabledforeground="#a3a3a3")
     buttonReturn.configure(foreground="#000000")
     buttonReturn.configure(highlightbackground="#d9d9d9")

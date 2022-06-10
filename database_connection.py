@@ -42,4 +42,23 @@ def save_carte_grise(c):
     db.commit()
     db.close()
 
+def save_carte_identite(c):
+    db = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root",
+        database="ocr_data"
+    )
+    cursor = db.cursor()
+    print("Start ! ")
+    query = """INSERT INTO carte_identite (nom, prenom,sexe,nationalite, date_naissance, lieu_naissance, nom_usage, numero_document, date_expiration,numero_carte,taille,date_delivrance,adresse) VALUES(%s, %s, %s, %s, %s, %s, %s,  %s, %s, %s, %s, %s, %s)"""
+    reference = (c.nom,c.prenom,c.sexe,c.nationalite,c.date_naissance,c.lieu_naissance,c.nom_usage,c.numero_document,c.date_expiration,c.numero_carte,c.taille,c.date_delivrance,c.adresse)
+    ex = cursor.execute(query,reference)
+    db.commit()
+    print("Fini ! ")
+    print(reference)
+    print(ex)
+    db.close()
+    db.close()
+
 db.close()

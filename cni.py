@@ -20,6 +20,12 @@ cni_verso_path = 'Images/cniverso.png'
 # thersholding otsu et après les dilatations
 # otsu et après binairisation
 
+def extractCNI(cni_recto_path, cni_verso_path):
+    result1 = permirecto(cni_recto_path)
+    result2 = permiverso(cni_verso_path)
+    return [result1, result2]
+
+
 def permirecto(cni_recto_path):
     def perfection(file_name):
         img = Image.open(file_name)
@@ -107,7 +113,6 @@ def permirecto(cni_recto_path):
 
 
 def permiverso(cni_verso_path):
-
     imageVerso = Image.open(cni_verso_path)
     newsize = (506, 322)
     imageVerso = imageVerso.resize(newsize)
@@ -142,5 +147,7 @@ def permiverso(cni_verso_path):
     print(verso)
     return verso
 
-permirecto(cni_recto_path)
-permiverso(cni_verso_path)
+
+#print(extractCNI(cni_recto_path, cni_verso_path))
+# permirecto(cni_recto_path)
+# permiverso(cni_verso_path)

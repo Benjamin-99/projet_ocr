@@ -7,7 +7,10 @@
 
 import tkinter as tk
 from tkinter import *
+import inter.buttonTemplate
 import inter.CarteIdentite.CarteIdentite1 as ci
+from Classes import CarteIdentite
+import database_connection as dbc
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
@@ -39,6 +42,7 @@ def frameCIF(window):
     EntryNomUsage.configure(insertbackground="black")
     EntryNomUsage.configure(selectbackground="blue")
     EntryNomUsage.configure(selectforeground="white")
+    EntryNomUsage.insert(0, ci.carte[0][5])
 
     LabelPrenom = tk.Label(frameCIF1)
     LabelPrenom.place(relx=0.025, rely=0.382, height=25, width=63)
@@ -115,6 +119,7 @@ def frameCIF(window):
     EntryNumDoc.configure(insertbackground="black")
     EntryNumDoc.configure(selectbackground="blue")
     EntryNumDoc.configure(selectforeground="white")
+    EntryNumDoc.insert(0, ci.carte[0][6])
 
     LabelDateDelivrance = tk.Label(frameCIF1)
     LabelDateDelivrance.place(relx=0.508, rely=0.611, height=25, width=111)
@@ -123,7 +128,6 @@ def frameCIF(window):
     LabelDateDelivrance.configure(anchor='w')
     LabelDateDelivrance.configure(background="#d9d9d9")
     LabelDateDelivrance.configure(compound='left')
-    LabelDateDelivrance.configure(cursor="fleur")
     LabelDateDelivrance.configure(disabledforeground="#a3a3a3")
     LabelDateDelivrance.configure(foreground="#000000")
     LabelDateDelivrance.configure(highlightbackground="#d9d9d9")
@@ -141,6 +145,7 @@ def frameCIF(window):
     EntryDateDelivrance.configure(insertbackground="black")
     EntryDateDelivrance.configure(selectbackground="blue")
     EntryDateDelivrance.configure(selectforeground="white")
+    EntryDateDelivrance.insert(0, ci.carte[1][1][0])
 
     Label1_2_2_1 = tk.Label(frameCIF1)
     Label1_2_2_1.place(relx=0.761, rely=0.716, height=15, width=1)
@@ -166,6 +171,7 @@ def frameCIF(window):
     EntryDateNaissance.configure(insertbackground="black")
     EntryDateNaissance.configure(selectbackground="blue")
     EntryDateNaissance.configure(selectforeground="white")
+    EntryDateNaissance.insert(0, ci.carte[0][3][1])
 
     EntryLieuNaissance = tk.Entry(frameCIF1)
     EntryLieuNaissance.place(relx=0.305, rely=0.725, height=30, relwidth=0.17)
@@ -178,6 +184,7 @@ def frameCIF(window):
     EntryLieuNaissance.configure(insertbackground="black")
     EntryLieuNaissance.configure(selectbackground="blue")
     EntryLieuNaissance.configure(selectforeground="white")
+    EntryLieuNaissance.insert(0, ci.carte[0][4])
 
     LabelNumCarte = tk.Label(frameCIF1)
     LabelNumCarte.place(relx=0.508, rely=0.477, height=46, width=67)
@@ -203,13 +210,14 @@ def frameCIF(window):
     EntryNumCarte.configure(insertbackground="black")
     EntryNumCarte.configure(selectbackground="blue")
     EntryNumCarte.configure(selectforeground="white")
+    EntryNumCarte.insert(0, ci.carte[0][6])
 
-    #TSeparator1 = ttk.Separator(frameCIF1)
-    #TSeparator1.place(relx=0.496, rely=0.153, relheight=0.668)
-    #TSeparator1.configure(orient="vertical")
+    # TSeparator1 = ttk.Separator(frameCIF1)
+    # TSeparator1.place(relx=0.496, rely=0.153, relheight=0.668)
+    # TSeparator1.configure(orient="vertical")
 
-    #menubar = tk.Menu(frameCIF1, font="TkMenuFont", bg=_bgcolor, fg=_fgcolor)
-    #frameCIF1.configure(menu=menubar)
+    # menubar = tk.Menu(frameCIF1, font="TkMenuFont", bg=_bgcolor, fg=_fgcolor)
+    # frameCIF1.configure(menu=menubar)
 
     EntryNom = tk.Entry(frameCIF1)
     EntryNom.place(relx=0.14, rely=0.153, height=30, relwidth=0.335)
@@ -222,6 +230,7 @@ def frameCIF(window):
     EntryNom.configure(insertbackground="black")
     EntryNom.configure(selectbackground="blue")
     EntryNom.configure(selectforeground="white")
+    EntryNom.insert(0, ci.carte[0][1])
 
     EntryPrenom = tk.Entry(frameCIF1)
     EntryPrenom.place(relx=0.14, rely=0.382, height=30, relwidth=0.335)
@@ -234,6 +243,7 @@ def frameCIF(window):
     EntryPrenom.configure(insertbackground="black")
     EntryPrenom.configure(selectbackground="blue")
     EntryPrenom.configure(selectforeground="white")
+    EntryPrenom.insert(0, ci.carte[0][2][0] + " " + ci.carte[0][2][1])
 
     LabelNomUsage = tk.Label(frameCIF1)
     LabelNomUsage.place(relx=0.013, rely=0.267, height=25, width=94)
@@ -258,6 +268,7 @@ def frameCIF(window):
     EntryNationalite.configure(insertbackground="black")
     EntryNationalite.configure(selectbackground="blue")
     EntryNationalite.configure(selectforeground="white")
+    EntryNationalite.insert(0, ci.carte[0][3][0])
 
     LabelNationalite = tk.Label(frameCIF1)
     LabelNationalite.place(relx=0.025, rely=0.496, height=25, width=63)
@@ -273,7 +284,7 @@ def frameCIF(window):
 
     EntrySexe = tk.Entry(frameCIF1)
     EntrySexe.place(relx=0.14, rely=0.611, height=30
-                              , relwidth=0.107)
+                    , relwidth=0.107)
     EntrySexe.configure(background="white")
     EntrySexe.configure(disabledforeground="#a3a3a3")
     EntrySexe.configure(font="TkFixedFont")
@@ -299,7 +310,6 @@ def frameCIF(window):
     EntryAdresse = tk.Entry(frameCIF1)
     EntryAdresse.place(relx=0.661, rely=0.153, height=90, relwidth=0.31)
     EntryAdresse.configure(background="white")
-    EntryAdresse.configure(cursor="fleur")
     EntryAdresse.configure(disabledforeground="#a3a3a3")
     EntryAdresse.configure(font="TkFixedFont")
     EntryAdresse.configure(foreground="#000000")
@@ -308,6 +318,10 @@ def frameCIF(window):
     EntryAdresse.configure(insertbackground="black")
     EntryAdresse.configure(selectbackground="blue")
     EntryAdresse.configure(selectforeground="white")
+    adresse = ""
+    for i in ci.carte[1][2]:
+        adresse = adresse + '\n' + i
+    EntryAdresse.insert(0, adresse)
 
     LabelAdresse = tk.Label(frameCIF1)
     LabelAdresse.place(relx=0.508, rely=0.153, height=25, width=89)
@@ -337,7 +351,7 @@ def frameCIF(window):
 
     DateExpi = tk.Entry(frameCIF1)
     DateExpi.place(relx=0.661, rely=0.725, height=30
-                            , relwidth=0.208)
+                   , relwidth=0.208)
     DateExpi.configure(background="white")
     DateExpi.configure(disabledforeground="#a3a3a3")
     DateExpi.configure(font="TkFixedFont")
@@ -347,6 +361,7 @@ def frameCIF(window):
     DateExpi.configure(insertbackground="black")
     DateExpi.configure(selectbackground="blue")
     DateExpi.configure(selectforeground="white")
+    DateExpi.insert(0, ci.carte[0][7][0])
 
     LabelTaille = tk.Label(frameCIF1)
     LabelTaille.place(relx=0.292, rely=0.611, height=25, width=33)
@@ -362,9 +377,8 @@ def frameCIF(window):
 
     EntryTaille = tk.Entry(frameCIF1)
     EntryTaille.place(relx=0.356, rely=0.611, height=30
-                                , relwidth=0.119)
+                      , relwidth=0.119)
     EntryTaille.configure(background="white")
-    EntryTaille.configure(cursor="fleur")
     EntryTaille.configure(disabledforeground="#a3a3a3")
     EntryTaille.configure(font="TkFixedFont")
     EntryTaille.configure(foreground="#000000")
@@ -373,8 +387,9 @@ def frameCIF(window):
     EntryTaille.configure(insertbackground="black")
     EntryTaille.configure(selectbackground="blue")
     EntryTaille.configure(selectforeground="white")
+    EntryTaille.insert(0, ci.carte[1][0][0])
 
-    buttonLoadData = tk.Button(frameCIF1)
+    buttonLoadData = tk.Button(frameCIF1, command=lambda: getValue())
     buttonLoadData.place(x=708, y=509, height=34, width=67)
     buttonLoadData.configure(activebackground="#ececec")
     buttonLoadData.configure(activeforeground="#000000")
@@ -387,7 +402,32 @@ def frameCIF(window):
     buttonLoadData.configure(pady="0")
     buttonLoadData.configure(text='''Enregistrer''')
 
-    buttonExit = tk.Button(frameCIF1, command=lambda: exit())
+    def calcul(date):
+        date2 = date.split(" ")
+        date3 = date2[2] + "-" + date2[1] + "-" + date2[0]
+        return date3
+
+    def getValue():
+        c = CarteIdentite(EntryNom.get(), EntryPrenom.get(), EntrySexe.get(),EntryNationalite.get(),calcul(EntryDateNaissance.get()),
+                          EntryLieuNaissance.get(), EntryNomUsage.get(),EntryNumDoc.get(), calcul(DateExpi.get()), EntryNumDoc.get(),
+                          EntryTaille.get(),calcul(EntryDateDelivrance.get()),EntryAdresse.get())
+
+        dbc.save_carte_identite(c)
+        buttonLoadData.configure(state='disabled')
+        labelValidation = tk.Label(frameCIF1)
+        labelValidation.place(relx=0.5, rely=0.880, height=66, width=120)
+        labelValidation.configure(activebackground="#f9f9f9")
+        labelValidation.configure(activeforeground="black")
+        labelValidation.configure(anchor='w')
+        labelValidation.configure(background="#d9d9d9")
+        labelValidation.configure(compound='left')
+        labelValidation.configure(disabledforeground="#a3a3a3")
+        labelValidation.configure(foreground="#000000")
+        labelValidation.configure(highlightbackground="#d9d9d9")
+        labelValidation.configure(highlightcolor="green")
+        labelValidation.configure(text='''Données validées!''')
+
+    buttonExit = tk.Button(frameCIF1, command=lambda: inter.buttonTemplate.return_home(window,frameCIF1))
     buttonExit.place(x=780, y=509, height=34, width=67)
     buttonExit.configure(activeforeground="#000000")
     buttonExit.configure(background="#d9d9d9")
@@ -397,15 +437,14 @@ def frameCIF(window):
     buttonExit.configure(highlightbackground="#d9d9d9")
     buttonExit.configure(highlightcolor="black")
     buttonExit.configure(pady="0")
-    buttonExit.configure(text='''Sortir''')
+    buttonExit.configure(text='''Menu''')
 
-    buttonReturn = tk.Button(frameCIF1, command=lambda :return_ci(window, frameCIF1))
+    buttonReturn = tk.Button(frameCIF1, command=lambda: return_ci(window, frameCIF1))
     buttonReturn.place(x=44, y=509, height=34, width=67)
     buttonReturn.configure(activebackground="#ececec")
     buttonReturn.configure(activeforeground="#000000")
     buttonReturn.configure(background="#d9d9d9")
     buttonReturn.configure(compound='right')
-    buttonReturn.configure(cursor="fleur")
     buttonReturn.configure(disabledforeground="#a3a3a3")
     buttonReturn.configure(foreground="#000000")
     buttonReturn.configure(highlightbackground="#d9d9d9")

@@ -66,7 +66,7 @@ def framePCF(window):
 
     ########button choisir 1
     btn = Button(framePCF1, command=lambda: upload_file(label, label2))
-    btn.place(x=44, y=80, height=34, width=67)
+    btn.place(x=40, y=80, height=34, width=77)
     btn.configure(activebackground="#ececec")
     btn.configure(activeforeground="#000000")
     btn.configure(background="#d9d9d9")
@@ -92,7 +92,7 @@ def framePCF(window):
 
     #################### button choice 2 ################################
     btn3 = Button(framePCF1, command=lambda: upload_file1(label1, labelPath2))
-    btn3.place(x=460, y=80, height=34, width=67)
+    btn3.place(x=455, y=80, height=34, width=77)
     btn3.configure(activebackground="#ececec")
     btn3.configure(activeforeground="#000000")
     btn3.configure(background="#d9d9d9")
@@ -153,7 +153,6 @@ def framePCF(window):
     buttonExtract.configure(activeforeground="#000000")
     buttonExtract.configure(background="#d9d9d9")
     buttonExtract.configure(compound='right')
-    buttonExtract.configure(cursor="fleur")
     buttonExtract.configure(disabledforeground="#a3a3a3")
     buttonExtract.configure(foreground="#000000")
     buttonExtract.configure(highlightbackground="#d9d9d9")

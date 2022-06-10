@@ -6,6 +6,11 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import inter.buttonTemplate as bt
 import inter.CarteIdentite.Formulaire1 as cif
+import cni
+
+pathRecto = ""
+pathVerso = ""
+carte = []
 
 
 def upload_file(labelImg, labelPath):
@@ -17,6 +22,8 @@ def upload_file(labelImg, labelPath):
         labelImg.configure(image=image)
         labelImg.image = image
         labelPath.configure(text=image_Path)
+        global pathRecto
+        pathRecto = image_Path
 
 
 def upload_file1(labelImg, labelPath):
@@ -28,6 +35,8 @@ def upload_file1(labelImg, labelPath):
         labelImg.configure(image=image)
         labelImg.image = image
         labelPath.configure(text=image_Path)
+        global pathVerso
+        pathVerso = image_Path
 
 
 def frameCI(window):
@@ -69,7 +78,7 @@ def frameCI(window):
 
     ########button choisir 1
     btn = Button(frameCI1, command=lambda: upload_file(label, label2))
-    btn.place(x=44, y=80, height=34, width=67)
+    btn.place(x=40, y=80, height=34, width=77)
     btn.configure(activebackground="#ececec")
     btn.configure(activeforeground="#000000")
     btn.configure(background="#d9d9d9")
@@ -79,7 +88,7 @@ def frameCI(window):
     btn.configure(highlightbackground="#d9d9d9")
     btn.configure(highlightcolor="black")
     btn.configure(pady="0")
-    btn.configure(text='''choisir''')
+    btn.configure(text='''Choisir recto''')
 
     labelPath2 = tk.Label(frameCI1)
     labelPath2.place(x=560, y=86, height=27, width=268)
@@ -110,7 +119,7 @@ def frameCI(window):
 
     #################### button choice 2 ################################
     btn3 = Button(frameCI1, command=lambda: upload_file1(label1, labelPath2))
-    btn3.place(x=460, y=80, height=34, width=67)
+    btn3.place(x=455, y=80, height=34, width=77)
     btn3.configure(activebackground="#ececec")
     btn3.configure(activeforeground="#000000")
     btn3.configure(background="#d9d9d9")
@@ -120,7 +129,7 @@ def frameCI(window):
     btn3.configure(highlightbackground="#d9d9d9")
     btn3.configure(highlightcolor="black")
     btn3.configure(pady="0")
-    btn3.configure(text='''choisir2''')
+    btn3.configure(text='''Choisir verso''')
 
     labelTitle = tk.Label(frameCI1)
     labelTitle.place(x=220, y=20, height=41, width=395)
@@ -136,13 +145,12 @@ def frameCI(window):
     labelTitle.configure(relief="solid")
     labelTitle.configure(text='''CARTE D'IDENTITE ''')
 
-    buttonExtract = tk.Button(frameCI1, command=lambda: cif.frameCIF(window))
+    buttonExtract = tk.Button(frameCI1, command=lambda: getPathsAndExtract(window))
     buttonExtract.place(x=710, y=500, height=34, width=67)
     buttonExtract.configure(activebackground="#ececec")
     buttonExtract.configure(activeforeground="#000000")
     buttonExtract.configure(background="#d9d9d9")
     buttonExtract.configure(compound='right')
-    buttonExtract.configure(cursor="fleur")
     buttonExtract.configure(disabledforeground="#a3a3a3")
     buttonExtract.configure(foreground="#000000")
     buttonExtract.configure(highlightbackground="#d9d9d9")
@@ -153,6 +161,17 @@ def frameCI(window):
     bt.button_exit(frameCI1)
     bt.button_return(window, frameCI1)
 
+def getPathsAndExtract(window):
+    #print("Extract")
+    global pathVerso
+    #print(pathVerso)
+    global pathRecto
+    #print(pathRecto)
+    if pathVerso != "" and pathRecto != "":
+        global carte
+        carte = cni.extractCNI(pathRecto, pathVerso)
+        print(carte)
+    cif.frameCIF(window)
 
 
 
