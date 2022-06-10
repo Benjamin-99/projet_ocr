@@ -47,4 +47,17 @@ class CarteGrise:
 
 
 
+class CarteIdentite:
+    """A simple example class"""
 
+    def __init__(self,nom,prenom,sexe,nationalite,date_naissance,lieu_naissance,nom_usage,numero_document,date_expiration,numero_carte):
+        self.nom= nom
+        self.prenom= prenom
+        self.sexe=sexe
+        self.nationalite=nationalite
+        self.date_naissance= date_naissance
+        self.lieu_naissance= lieu_naissance
+        self.nom_usage=nom_usage
+        self.numero_document=numero_document
+        self.date_expiration = date_expiration
+        self.numero_carte = numero_carte
